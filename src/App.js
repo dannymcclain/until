@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       value: '',
-      startDate: moment()
+      selectedDate: null,
     };
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -22,12 +22,12 @@ class App extends React.Component {
 
   handleDateChange(date){
     this.setState({
-      startDate: date
+      selectedDate: date
     });
   }
 
   handleSubmit(event) {
-    console.log(this.state.value + this.state.startDate._d);
+    console.log(this.state.value + ' ' + this.state.selectedDate.format("MMM Do YY"));
     event.preventDefault();
   }
 
@@ -35,15 +35,23 @@ class App extends React.Component {
     return (
       <div className="container">
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input className="add-entry" type="text" value={this.state.value} onChange={this.handleNameChange} />
-        </label>
+        <label>Name:</label>
+        <input
+          className="add-entry"
+          type="text"
+          value={this.state.value}
+          onChange={this.handleNameChange}
+          />
+        <label>Date:</label>
+    
         <DatePicker
-          selected={this.state.startDate}
+          selected={this.state.selectedDate}
           onChange={this.handleDateChange}
+          placeholderText="Date"
         />
         <input type="submit" value="Add" />
+
+        <p>{this.state.selectedDate && this.state.selectedDate.format("MMM Do YY")}</p>
       </form>
       </div>
     );
