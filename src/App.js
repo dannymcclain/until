@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       value: '',
-      selectedDate: moment(),
+      selectedDate: null,
       myDates: []
     };
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -31,14 +31,14 @@ class App extends React.Component {
     event.preventDefault();
     const myDateList = {
       name: this.state.value, 
-      date: this.state.selectedDate.format("MMM Do YY"), 
+      date: this.state.selectedDate.format("MMM D"), 
       daysUntil: Math.round(this.state.selectedDate.diff(moment(), 'days', true))
     }
     this.setState({
-      myDates: [...this.state.myDates, myDateList]
+      myDates: [...this.state.myDates, myDateList],
+      value: '',
+      selectedDate: null
     });
-    // console.log(myDateList);
-    console.log(this.state.myDates);
   }
 
   render() {
@@ -51,17 +51,24 @@ class App extends React.Component {
           type="text"
           value={this.state.value}
           onChange={this.handleNameChange}
+          placeholder="Enter a Name"
           />
         <label>Date:</label>
     
         <DatePicker
           selected={this.state.selectedDate}
           onChange={this.handleDateChange}
-          placeholderText="Date"
+          placeholderText="Select a Date"
           calendarClassName="untilCal"
+          dateFormat="MMM D"
         />
         <input type="submit" value="Add" />
 
+        <div className="event-list">
+          {this.state.myDates.map((event, index) => (
+              <p key={event.name}>{event.name} {event.date} {event.daysUntil}</p>
+          ))}
+        </div>
       </form>
       </div>
     );

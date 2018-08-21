@@ -16,16 +16,19 @@ label {
   display: block;
   font-weight: bold;
   margin: 20px 0 0;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 input {
   display: block;
-  padding: 12px;
+  padding: 10px;
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 5px;
   outline: none;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.2px;
 }
 
 input[type=text]{
@@ -36,6 +39,7 @@ input[type=text]{
 input[type=submit]{
   background: #0099ff;
   color: #fff;
+  padding: 10px 14px;
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -49,4 +53,24 @@ input[type=text]:focus {
   border-color: #0099ff;
 }
 
-/* .untilCal {} */
+.untilCal {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 8px 20px 0 rgba(0,0,0,0.20);
+}
+
+.untilCal .react-datepicker__triangle {
+  border-bottom: none;
+  border-top: none;
+  display: none;
+}
+
+.untilCal .react-datepicker__header {
+  text-align: center;
+  background-color: #f0f0f0;
+  border-bottom: none;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  padding-top: 8px;
+  position: relative;
+}
