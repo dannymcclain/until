@@ -9,7 +9,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       value: '',
-      selectedDate: null,
+      selectedDate: moment(),
+      myDates: []
     };
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -27,8 +28,15 @@ class App extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log(this.state.value + ' ' + this.state.selectedDate.format("MMM Do YY"));
     event.preventDefault();
+    // console.log(this.state.value + ' ' + this.state.selectedDate.format("MMM Do YY"));
+    const eventName = this.state.value;
+    const eventDate = this.state.selectedDate.format("MMM Do YY");
+    const myDateList = {name: eventName, date: eventDate}
+    this.setState({
+      myDates: [...this.state.myDates, myDateList]
+    })
+    console.log(myDateList);
   }
 
   render() {
@@ -51,7 +59,6 @@ class App extends React.Component {
         />
         <input type="submit" value="Add" />
 
-        <p>{this.state.selectedDate && this.state.selectedDate.format("MMM Do YY")}</p>
       </form>
       </div>
     );
