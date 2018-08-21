@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-size: 13px;
 }
 
 .container {
@@ -15,6 +16,7 @@ label {
   display: block;
   font-weight: bold;
   margin: 20px 0 0;
+  font-size: 11px;
 }
 
 input {
@@ -46,3 +48,5 @@ input[type=submit]:active{
 input[type=text]:focus {
   border-color: #0099ff;
 }
+
+/* .untilCal {} */

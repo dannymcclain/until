@@ -29,14 +29,16 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log(this.state.value + ' ' + this.state.selectedDate.format("MMM Do YY"));
-    const eventName = this.state.value;
-    const eventDate = this.state.selectedDate.format("MMM Do YY");
-    const myDateList = {name: eventName, date: eventDate}
+    const myDateList = {
+      name: this.state.value, 
+      date: this.state.selectedDate.format("MMM Do YY"), 
+      daysUntil: Math.round(this.state.selectedDate.diff(moment(), 'days', true))
+    }
     this.setState({
       myDates: [...this.state.myDates, myDateList]
-    })
-    console.log(myDateList);
+    });
+    // console.log(myDateList);
+    console.log(this.state.myDates);
   }
 
   render() {
@@ -56,6 +58,7 @@ class App extends React.Component {
           selected={this.state.selectedDate}
           onChange={this.handleDateChange}
           placeholderText="Date"
+          calendarClassName="untilCal"
         />
         <input type="submit" value="Add" />
 
