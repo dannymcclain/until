@@ -45,7 +45,6 @@ class App extends React.Component {
     return (
       <div className="container">
       <form onSubmit={this.handleSubmit}>
-        <label>Name:</label>
         <input
           className="add-entry"
           type="text"
@@ -53,8 +52,6 @@ class App extends React.Component {
           onChange={this.handleNameChange}
           placeholder="Enter a Name"
           />
-        <label>Date:</label>
-    
         <DatePicker
           selected={this.state.selectedDate}
           onChange={this.handleDateChange}

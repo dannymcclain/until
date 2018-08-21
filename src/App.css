@@ -8,10 +8,14 @@ body {
 .container {
   width: 100%;
   max-width: 480px;
-  padding: 0 20px;
+  padding: 20px;
   margin: 40px auto 0;
+  background: #f7f7f7;
 }
-
+form {
+  padding: 0;
+  margin: 0;
+}
 label {
   display: block;
   font-weight: bold;
@@ -19,10 +23,13 @@ label {
   font-size: 13px;
 }
 
+form > * {
+  display: inline;
+}
+
 input {
-  display: block;
   padding: 10px;
-  margin: 8px 0;
+  margin: 8px 10px 0 0;
   box-sizing: border-box;
   border-radius: 5px;
   outline: none;
@@ -32,7 +39,7 @@ input {
 }
 
 input[type=text]{
-  border: 2px solid #eee;
+  border: none;
   transition: border-color 200ms ease-out;
 }
 
