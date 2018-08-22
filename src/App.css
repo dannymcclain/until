@@ -6,8 +6,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
   font-size: 13px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .container {
@@ -40,6 +40,7 @@ h1 {
 form {
   padding: 0;
   margin: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
 }
 
 label {
@@ -94,7 +95,7 @@ input[type=text]:focus {
   border: none;
   border-radius: 5px;
   box-shadow: 0 8px 20px 0 rgba(0,0,0,0.20);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .untilCal .react-datepicker__triangle {
@@ -115,15 +116,13 @@ input[type=text]:focus {
 
 .event-list div {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 6px 15px;
 }
 
-.event-list div p {
-  flex-basis: 1;
-}
-
-p.event-name {
+.event-name {
   font-weight: 600;
   font-size: 13px;
   color: #000000;
@@ -131,15 +130,16 @@ p.event-name {
   text-align: left;
 }
 
-p.event-date {
+.event-date {
   font-weight: 400;
   font-size: 13px;
   color: #A1A5A6;
   letter-spacing: -0.17px;
   text-align: left;
+  margin-left: 8px;
 }
 
-p.days-until {
+.days-until {
   font-weight: 600;
   font-size: 13px;
   color: #0A99FF;

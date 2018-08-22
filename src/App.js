@@ -56,34 +56,32 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-      <header><h1>Days until...</h1></header>
-      <form onSubmit={this.handleSubmit}>
-        <input
-          className="add-entry"
-          type="text"
-          value={this.state.value}
-          onChange={this.handleNameChange}
-          placeholder="Name"
+        <header><h1>Days until...</h1></header>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            className="add-entry"
+            type="text"
+            value={this.state.value}
+            onChange={this.handleNameChange}
+            placeholder="Name"
+            />
+          <DatePicker
+            selected={this.state.selectedDate}
+            onChange={this.handleDateChange}
+            placeholderText="Date"
+            calendarClassName="untilCal"
+            dateFormat="MMM D"
           />
-        <DatePicker
-          selected={this.state.selectedDate}
-          onChange={this.handleDateChange}
-          placeholderText="Date"
-          calendarClassName="untilCal"
-          dateFormat="MMM D"
-        />
-        <input type="submit" value="Add" />
-
+          <input type="submit" value="Add" />
+        </form>
         <div className="event-list">
-          {this.state.myDates.map((event, index) => (
-            <div key={event.name}>
-              <p className="event-name">{event.name}</p>
-              <p className="event-date">{event.date}</p>
-              <p className="days-until">{event.daysUntil}</p>
-            </div>
-          ))}
-        </div>
-      </form>
+            {this.state.myDates.map((event, index) => (
+              <div key={event.name}>
+                <p className="event-name">{event.name} <span className="event-date">{event.date}</span></p>
+                <p className="days-until">{event.daysUntil}</p>
+              </div>
+            ))}
+          </div>
       </div>
     );
   }
