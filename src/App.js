@@ -32,7 +32,7 @@ class App extends React.Component {
     const myDateList = {
       name: this.state.value, 
       date: this.state.selectedDate.format("MMM D"), 
-      daysUntil: Math.round(this.state.selectedDate.diff(moment(), 'days', true))
+      daysUntil: Math.round(this.state.selectedDate.diff(moment(), 'days', true)) + ' days'
     }
     this.setState({
       myDates: [...this.state.myDates, myDateList],
@@ -44,18 +44,19 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+      <header><h1>Until</h1></header>
       <form onSubmit={this.handleSubmit}>
         <input
           className="add-entry"
           type="text"
           value={this.state.value}
           onChange={this.handleNameChange}
-          placeholder="Enter a Name"
+          placeholder="Name"
           />
         <DatePicker
           selected={this.state.selectedDate}
           onChange={this.handleDateChange}
-          placeholderText="Select a Date"
+          placeholderText="Date"
           calendarClassName="untilCal"
           dateFormat="MMM D"
         />
