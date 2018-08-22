@@ -17,6 +17,18 @@ class App extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const localState = localStorage.getItem("state");
+    if (localState){
+      this.setState({
+        myDates: JSON.parse(localState)
+      })
+    }
+  }
+  componentDidUpdate() {
+    localStorage.setItem("state", JSON.stringify(this.state.myDates));
+  }
+
   handleNameChange(event) {
     this.setState({value: event.target.value});
   }
@@ -44,7 +56,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-      <header><h1>Until</h1></header>
+      <header><h1>Days until...</h1></header>
       <form onSubmit={this.handleSubmit}>
         <input
           className="add-entry"
@@ -64,7 +76,11 @@ class App extends React.Component {
 
         <div className="event-list">
           {this.state.myDates.map((event, index) => (
-              <p key={event.name}>{event.name} {event.date} {event.daysUntil}</p>
+            <div key={event.name}>
+              <p className="event-name">{event.name}</p>
+              <p className="event-date">{event.date}</p>
+              <p className="days-until">{event.daysUntil}</p>
+            </div>
           ))}
         </div>
       </form>
