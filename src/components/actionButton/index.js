@@ -9,7 +9,7 @@ class ActionButton extends Component {
         onClick={this.props.handleClick}
         className={`add-button ${this.props.isActive ? "is-active" : ""}`}
         >
-        <img src={plus} /> 
+        <span className="stick" /><span className="stick" />
       </button>
     );
   }

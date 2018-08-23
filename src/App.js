@@ -73,8 +73,8 @@ class App extends React.Component {
           <h1>Days until...</h1>
         </header>
         <ReactCSSTransitionGroup
-          transitionName="example"
-          transitionEnterTimeout={500}
+          transitionName="scaleDown"
+          transitionEnterTimeout={300}
           transitionLeaveTimeout={300}>
           {this.state.showForm &&
           <form className="create-event" onSubmit={this.handleSubmit}>
