@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ActionButton from './components/actionButton';
 import './App.css';
 
 class App extends React.Component {
@@ -10,7 +12,8 @@ class App extends React.Component {
     this.state = {
       value: '',
       selectedDate: null,
-      myDates: []
+      myDates: [],
+      showForm: false
     };
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -53,27 +56,45 @@ class App extends React.Component {
     });
   }
 
+  toggleMenu = () => {
+    this.setState( (currentState) => {
+      return {showForm: !currentState.showForm}
+    });
+  }
+
   render() {
     return (
       <div className="container">
-        <header><h1>Days until...</h1></header>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            className="add-entry"
-            type="text"
-            value={this.state.value}
-            onChange={this.handleNameChange}
-            placeholder="Name"
-            />
-          <DatePicker
-            selected={this.state.selectedDate}
-            onChange={this.handleDateChange}
-            placeholderText="Date"
-            calendarClassName="untilCal"
-            dateFormat="MMM D"
+        <header>
+          <ActionButton 
+            handleClick={this.toggleMenu} 
+            isActive={this.state.showForm}
           />
-          <input type="submit" value="Add" />
-        </form>
+          <h1>Days until...</h1>
+        </header>
+        <ReactCSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          {this.state.showForm &&
+          <form className="create-event" onSubmit={this.handleSubmit}>
+            <input
+              className="add-entry"
+              type="text"
+              value={this.state.value}
+              onChange={this.handleNameChange}
+              placeholder="Name"
+              />
+            <DatePicker
+              selected={this.state.selectedDate}
+              onChange={this.handleDateChange}
+              placeholderText="Date"
+              calendarClassName="untilCal"
+              dateFormat="MMM D"
+            />
+            <input type="submit" value="Add" />
+          </form>}
+          </ReactCSSTransitionGroup>  
         <div className="event-list">
             {this.state.myDates.map((event, index) => (
               <div key={event.name}>

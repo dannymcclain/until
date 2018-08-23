@@ -28,7 +28,7 @@ header {
 }
 
 h1 {
-  font-weight: 400;
+  font-weight: 600;
   padding: 8px;
   font-size: 13px;
   color: #8B8E8F;
@@ -38,9 +38,10 @@ h1 {
 }
 
 form {
-  padding: 0;
+  padding: 8px 15px 15px;
   margin: 0;
   border-bottom: 1px solid rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.02);
 }
 
 label {
@@ -70,7 +71,7 @@ input {
 }
 
 input[type=text]{
-  border: none;
+  border: 1px solid rgba(0,0,0,0.15);
   transition: border-color 200ms ease-out;
 }
 
@@ -81,10 +82,12 @@ input[type=submit]{
   font-weight: bold;
   border: none;
   cursor: pointer;
+  transform: scale(1);
+  transition: transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 input[type=submit]:active{
-  margin-top:9px;
+  transform: scale(0.9);
 }
 
 input[type=text]:focus {
@@ -145,4 +148,35 @@ input[type=text]:focus {
   color: #0A99FF;
   letter-spacing: -0.17px;
   text-align: right;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.add-button {
+  transform: rotate(0);
+  transition: transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: center top;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+.add-button.is-active {
+  transform: rotate(45deg);
 }
