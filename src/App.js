@@ -50,9 +50,10 @@ class App extends React.Component {
       daysUntil: Math.round(this.state.selectedDate.diff(moment(), 'days', true)) + ' days'
     }
     this.setState({
-      myDates: [...this.state.myDates, myDateList],
+      myDates: [myDateList, ...this.state.myDates],
       value: '',
-      selectedDate: null
+      selectedDate: null,
+      showForm: false
     });
   }
 
@@ -60,6 +61,14 @@ class App extends React.Component {
     this.setState( (currentState) => {
       return {showForm: !currentState.showForm}
     });
+  }
+
+  removeItem = (name) => {
+    console.log(name);
+    const filteredDates = this.state.myDates.filter( (item) => item.name !== name);
+    this.setState ({
+      myDates: filteredDates
+    })
   }
 
   render() {
@@ -72,11 +81,7 @@ class App extends React.Component {
           />
           <h1>Days until...</h1>
         </header>
-        <ReactCSSTransitionGroup
-          transitionName="scaleDown"
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={300}>
-          {this.state.showForm &&
+        <div className={`${this.state.showForm ? "content-container__is-open" : "content-container"}`}>
           <form className="create-event" onSubmit={this.handleSubmit}>
             <input
               className="add-entry"
@@ -93,15 +98,20 @@ class App extends React.Component {
               dateFormat="MMM D"
             />
             <input type="submit" value="Add" />
-          </form>}
-          </ReactCSSTransitionGroup>  
-        <div className="event-list">
-            {this.state.myDates.map((event, index) => (
-              <div key={event.name}>
-                <p className="event-name">{event.name} <span className="event-date">{event.date}</span></p>
-                <p className="days-until">{event.daysUntil}</p>
-              </div>
-            ))}
+          </form>
+          <div className="event-list">
+          <ReactCSSTransitionGroup
+          transitionName="fadeIn"
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={300}>        
+              {this.state.myDates.map((event, index) => (
+                <div key={event.name}>
+                  <p className="event-name">{event.name} <span className="event-date">{event.date}</span></p>
+                  <p className="days-until">{event.daysUntil} <a className="delete" onClick={ () => this.removeItem(event.name)}>Delete</a></p>
+                </div>
+              ))}
+            </ReactCSSTransitionGroup>
+            </div>
           </div>
       </div>
     );

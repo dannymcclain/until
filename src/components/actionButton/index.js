@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import plus from './plus.svg';
-
 
 class ActionButton extends Component {
   render() {
