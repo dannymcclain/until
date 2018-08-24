@@ -73,49 +73,53 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-      
+      <div>
         <header>
-          <ActionButton 
-            handleClick={this.toggleMenu} 
-            isActive={this.state.showForm}
-          />
-          <h1>Days until...</h1>
-        </header>
-        <div className={`content-container ${this.state.showForm ? "content-container__is-open" : ""}`}>
-          <form className="create-event" onSubmit={this.handleSubmit}>
-            <input
-              className="add-entry"
-              type="text"
-              value={this.state.value}
-              onChange={this.handleNameChange}
-              placeholder="Name"
-              />
-            <DatePicker
-              selected={this.state.selectedDate}
-              onChange={this.handleDateChange}
-              placeholderText="Date"
-              calendarClassName="untilCal"
-              dateFormat="MMM D YY"
-              minDate={moment().add(1, 'days')}
+          <div className="container">
+            <ActionButton 
+              handleClick={this.toggleMenu} 
+              isActive={this.state.showForm}
             />
-            <input type="submit" value="Add" />
-          </form>
-          <div className="event-list">
-          <ReactCSSTransitionGroup
-          transitionName="fadeIn"
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={100}>        
-              {this.state.myDates.map((event) => (
-                <EventItem
-                  key={event.name}
-                  {...event}
-                  handleDelete={() => this.removeItem(event.name)}
-                />
-              ))}
-            </ReactCSSTransitionGroup>
-            </div>
+            <h1>Until</h1>
+            <div></div>
           </div>
+        </header>
+        <div className="container">
+          <div className={`content-container ${this.state.showForm ? "content-container__is-open" : ""}`}>
+            <form className="create-event" onSubmit={this.handleSubmit}>
+              <input
+                className="add-entry"
+                type="text"
+                value={this.state.value}
+                onChange={this.handleNameChange}
+                placeholder="Name"
+                />
+              <DatePicker
+                selected={this.state.selectedDate}
+                onChange={this.handleDateChange}
+                placeholderText="Date"
+                calendarClassName="untilCal"
+                dateFormat="MMM D YY"
+                minDate={moment().add(1, 'days')}
+              />
+              <input type="submit" value="Add" />
+            </form>
+            <div className="event-list">
+            <ReactCSSTransitionGroup
+            transitionName="fadeIn"
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={100}>        
+                {this.state.myDates.map((event) => (
+                  <EventItem
+                    key={event.name}
+                    {...event}
+                    handleDelete={() => this.removeItem(event.name)}
+                  />
+                ))}
+              </ReactCSSTransitionGroup>
+              </div>
+            </div>
+        </div>
       </div>
     );
   }

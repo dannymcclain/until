@@ -2,14 +2,17 @@ import React from 'react';
 import DeleteButton from './../deleteButton';
 
 const EventItem = ({name, date, daysUntil, handleDelete}) => (
-  <div>
-    <p className="event-name">{name}
-      <span className="event-date">{date}</span>
-    </p>
-    <p className="days-until">{daysUntil}</p>
-    <DeleteButton
-      onDelete={handleDelete}
-    />
+  <div className="event-item">
+    <div className="event-left">
+      <p className="event-name">{name}</p>
+      <p className="event-date">{date}</p>
+    </div>
+    <div className="event-right">
+      <p className="days-until">{daysUntil}</p>
+      <DeleteButton
+        onDelete={handleDelete}
+      />
+    </div>
   </div>
 )
 

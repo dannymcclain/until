@@ -1,23 +1,50 @@
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-size: 13px;
+  font-size: 14px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-image: linear-gradient(-135deg, #18C9FF 0%, #0083E0 100%);
+  background-position: cover;
+  height: 100vh;
+}
+
+header {
+  background: #FFFFFF;
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.10);
+  z-index: 10;
+  position: relative;
+  padding: 24px 0;
+}
+
+h1 {
+  font-weight: 700;
+  margin: 0;
+  font-size: 18px;
+  color: #000000;
+  letter-spacing: -0.2px;
+  text-align: center;
 }
 
 .container {
   width: 100%;
   max-width: 480px;
-  margin: 40px auto 0;
-  background: #FFFFFF;
-  min-height: 180px;
-  height: calc(100% - 50px);
-  border-radius: 5px;
+  margin: 0 auto;
+}
+
+header .container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .content-container {
@@ -29,8 +56,6 @@ body {
 .content-container form {
   opacity: 1;
   transition: opacity 100ms linear;
-  border-left: 1px solid #D9D9D9;
-  border-right: 1px solid #D9D9D9;
 }
 
 .content-container__is-open {
@@ -41,40 +66,34 @@ body {
   opacity: 1;
 }
 
-
-header {
-  background-image: linear-gradient(-180deg, #F7F7F7 0%, #EDEFF0 97%);
-  /* box-shadow: inset 0 1px 1px 0 #FFFFFF, inset 0 0 0 0 rgba(0,0,0,0.20); */
-  border-radius: 5px 5px 0 0;
-  border: 1px solid #D9D9D9;
-  z-index: 10;
-  position: relative;
-  padding: 0 8px;
-  display: flex;
-  height: 54px;
-  justify-content: flex-start;
-  align-items: center;
-}
-
 .add-button {
-  transform: rotate(0);
-  transition: transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transform-origin: center center;
   outline: none;
   border: none;
   background: transparent;
-  width:26px;
   cursor: pointer;
+  background: #e6f4ff;
+  border-radius: 3px;
+  height: 28px;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.add-button.is-active {
+.add-button .plus-icon {
+  transform: rotate(0) translateY(-1px);
+  transition: transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: center center;
+}
+
+.add-button.is-active .plus-icon {
   transform: rotate(45deg);
 }
 
-.add-button .stick {
+.add-button .plus-icon .stick {
   display: block;
   height: 2px;
-  width: 12px;
+  width: 10px;
   background: #0A99FF;
   border-radius: 1px;
 }
@@ -84,67 +103,60 @@ header {
   transform-origin: center center;
 }
 
-h1 {
-  font-weight: 600;
-  padding: 8px;
-  font-size: 13px;
-  color: #8B8E8F;
-  letter-spacing: 0;
-  text-align: center;
-  margin: 0;
-  flex-grow: 2;
-  margin-left: -26px;
-}
 
-.event-list div {
+
+.event-list .event-item {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   padding: 4px 15px;
-  border: 1px solid #D9D9D9;
   margin-top: -1px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.10);
+  padding: 20px;
+  border-radius: 9px;
+  margin: 30px 0 0;
 }
 
-.event-list div:last-child {
-  border-radius: 0 0 5px 5px;
+.event-name {
+  font-weight: bold;
+  color: #000000;
+  letter-spacing: -0.2px;
+  text-align: left;
 }
 
-.event-list div .delete {
-  color: #0099ff;
+.event-date {
+  font-weight: normal;
+  font-size: 12px;
+  color: #A1A5A6;
+  letter-spacing: -0.2px;
+  text-align: left;
+  margin-left: 23px;
+}
+
+.days-until {
+  font-weight: 600;
+  color: #0A99FF;
+  letter-spacing: -0.2px;
+  text-align: right;
+}
+
+.event-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.event-list .event-item .delete {
   transition: opacity 300ms linear;
   cursor: pointer;
   transition: color 100ms ease;
 }
 
-.event-list div .delete:hover {
- color: rgb(255, 38, 74);
-}
-
-.event-name {
-  font-weight: 600;
-  font-size: 13px;
-  color: #000000;
-  letter-spacing: -0.17px;
-  text-align: left;
-}
-
-.event-date {
-  font-weight: 400;
-  font-size: 13px;
-  color: #A1A5A6;
-  letter-spacing: -0.17px;
-  text-align: left;
-  margin-left: 8px;
-}
-
-.days-until {
-  font-weight: 600;
-  font-size: 13px;
-  color: #0A99FF;
-  letter-spacing: -0.17px;
-  text-align: right;
+.event-list .event-item .delete:hover path {
+  fill: rgb(255, 38, 74);
 }
 
 

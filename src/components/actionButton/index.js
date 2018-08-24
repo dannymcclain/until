@@ -5,7 +5,9 @@ const ActionButton = ({handleClick, isActive}) => (
     onClick={handleClick}
     className={`add-button ${isActive ? "is-active" : ""}`}
     >
+    <div className="plus-icon">
     <span className="stick" /><span className="stick" />
+    </div>
   </button>
 )
 
