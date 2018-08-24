@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ActionButton extends Component {
-  render() {
-    return (
-      <button 
-        onClick={this.props.handleClick}
-        className={`add-button ${this.props.isActive ? "is-active" : ""}`}
-        >
-        <span className="stick" /><span className="stick" />
-      </button>
-    );
-  }
-}
+const ActionButton = ({handleClick, isActive}) => (
+  <button 
+    onClick={handleClick}
+    className={`add-button ${isActive ? "is-active" : ""}`}
+    >
+    <span className="stick" /><span className="stick" />
+  </button>
+)
 
 export default ActionButton;

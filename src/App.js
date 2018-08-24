@@ -4,9 +4,10 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ActionButton from './components/actionButton';
+import EventItem from './components/eventItem';
 import './App.css';
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,13 +45,13 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const myDateList = {
+    const myEvent = {
       name: this.state.value, 
       date: this.state.selectedDate.format("MMM D"), 
       daysUntil: Math.round(this.state.selectedDate.diff(moment(), 'days', true)) + ' days'
     }
     this.setState({
-      myDates: [myDateList, ...this.state.myDates],
+      myDates: [myEvent, ...this.state.myDates],
       value: '',
       selectedDate: null,
       showForm: false
@@ -64,7 +65,6 @@ class App extends React.Component {
   }
 
   removeItem = (name) => {
-    console.log(name);
     const filteredDates = this.state.myDates.filter( (item) => item.name !== name);
     this.setState ({
       myDates: filteredDates
@@ -74,6 +74,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+      
         <header>
           <ActionButton 
             handleClick={this.toggleMenu} 
@@ -81,7 +82,7 @@ class App extends React.Component {
           />
           <h1>Days until...</h1>
         </header>
-        <div className={`${this.state.showForm ? "content-container__is-open" : "content-container"}`}>
+        <div className={`content-container ${this.state.showForm ? "content-container__is-open" : ""}`}>
           <form className="create-event" onSubmit={this.handleSubmit}>
             <input
               className="add-entry"
@@ -95,7 +96,8 @@ class App extends React.Component {
               onChange={this.handleDateChange}
               placeholderText="Date"
               calendarClassName="untilCal"
-              dateFormat="MMM D"
+              dateFormat="MMM D YY"
+              minDate={moment().add(1, 'days')}
             />
             <input type="submit" value="Add" />
           </form>
@@ -103,12 +105,13 @@ class App extends React.Component {
           <ReactCSSTransitionGroup
           transitionName="fadeIn"
           transitionEnterTimeout={300}
-          transitionLeaveTimeout={300}>        
-              {this.state.myDates.map((event, index) => (
-                <div key={event.name}>
-                  <p className="event-name">{event.name} <span className="event-date">{event.date}</span></p>
-                  <p className="days-until">{event.daysUntil} <a className="delete" onClick={ () => this.removeItem(event.name)}>Delete</a></p>
-                </div>
+          transitionLeaveTimeout={100}>        
+              {this.state.myDates.map((event) => (
+                <EventItem
+                  key={event.name}
+                  {...event}
+                  handleDelete={() => this.removeItem(event.name)}
+                />
               ))}
             </ReactCSSTransitionGroup>
             </div>
