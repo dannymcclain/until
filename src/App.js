@@ -3,6 +3,8 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker } from 'emoji-mart';
 import ActionButton from './components/actionButton';
 import EventItem from './components/eventItem';
 import './App.css';
@@ -14,7 +16,7 @@ class App extends Component {
       value: '',
       selectedDate: null,
       myDates: [],
-      showForm: false
+      showForm: true
     };
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -86,9 +88,31 @@ class App extends Component {
         </header>
         <div className="container">
           <div className={`content-container ${this.state.showForm ? "content-container__is-open" : ""}`}>
-            <form className="create-event" onSubmit={this.handleSubmit}>
+
+            <form className="add-entry container" onSubmit={this.handleSubmit}>
               <input
-                className="add-entry"
+                className="input-emoji"
+                type="text"
+                value={this.state.value}
+                onChange={this.handleNameChange}
+                placeholder="Name"
+                />
+              <Picker
+                title=''
+                showPreview={false}
+                style={{ 
+                  position: 'absolute', 
+                  top: '0', 
+                  left: '0',
+                  visibility: 'hidden'
+                  // opacity: '0.5',
+                  // transform: 'translateY(-10%)',
+                }}
+                color='#0099FF'
+                perLine='7'
+              />
+              <input
+                className="input-name"
                 type="text"
                 value={this.state.value}
                 onChange={this.handleNameChange}
@@ -102,8 +126,9 @@ class App extends Component {
                 dateFormat="MMM D YY"
                 minDate={moment().add(1, 'days')}
               />
-              <input type="submit" value="Add" />
+              <button type="submit" className="btn-submit">Add</button>
             </form>
+
             <div className="event-list">
             <ReactCSSTransitionGroup
             transitionName="fadeIn"
