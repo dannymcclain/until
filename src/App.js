@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
+import { Emoji } from 'emoji-mart'
 import ActionButton from './components/actionButton';
 import EventItem from './components/eventItem';
 import './App.css';
@@ -13,6 +14,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      emoji: 'wave',
       value: '',
       selectedDate: null,
       myDates: [],
@@ -48,6 +50,7 @@ class App extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const myEvent = {
+      emoji: this.state.emoji,
       name: this.state.value, 
       date: this.state.selectedDate.format("MMM D"), 
       daysUntil: Math.round(this.state.selectedDate.diff(moment(), 'days', true)) + ' days'
@@ -73,6 +76,13 @@ class App extends Component {
     })
   }
 
+  addEmoji = (emoji) => {
+    console.log(emoji);
+    this.setState ({
+      emoji: emoji
+    })
+  }
+
   render() {
     return (
       <div>
@@ -90,26 +100,19 @@ class App extends Component {
           <div className={`content-container ${this.state.showForm ? "content-container__is-open" : ""}`}>
 
             <form className="add-entry container" onSubmit={this.handleSubmit}>
-              <input
-                className="input-emoji"
-                type="text"
-                value={this.state.value}
-                onChange={this.handleNameChange}
-                placeholder="Name"
-                />
+              <Emoji emoji={this.state.emoji} size={32} onClick={this.openMart}/>
+
               <Picker
                 title=''
                 showPreview={false}
                 style={{ 
                   position: 'absolute', 
-                  top: '0', 
+                  top: '120px', 
                   left: '0',
-                  visibility: 'hidden'
-                  // opacity: '0.5',
-                  // transform: 'translateY(-10%)',
                 }}
                 color='#0099FF'
                 perLine='7'
+                onSelect={this.addEmoji}
               />
               <input
                 className="input-name"

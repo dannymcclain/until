@@ -180,22 +180,16 @@ form.add-entry {
   align-items: center; */
 }
 
-label {
-  display: block;
-  font-weight: bold;
-  margin: 20px 0 0;
-  font-size: 13px;
-}
-
 input {
   outline: none;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: -0.2px;
   background: transparent;
-  padding: 16px 0;
+  padding: 8px 12px;
   border: 1px solid #A1A5A6;
   transition: border-color 200ms ease-out;
+  border-radius: 7px;
 }
 
 input::placeholder {
