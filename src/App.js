@@ -4,8 +4,7 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import 'emoji-mart/css/emoji-mart.css';
-import { Picker } from 'emoji-mart';
-import { Emoji } from 'emoji-mart'
+import { Picker, Emoji } from 'emoji-mart';
 import ActionButton from './components/actionButton';
 import EventItem from './components/eventItem';
 import './App.css';
@@ -18,7 +17,8 @@ class App extends Component {
       value: '',
       selectedDate: null,
       myDates: [],
-      showForm: true
+      showForm: true,
+      showMart: false
     };
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -59,7 +59,7 @@ class App extends Component {
       myDates: [myEvent, ...this.state.myDates],
       value: '',
       selectedDate: null,
-      showForm: false
+      // showForm: false
     });
   }
 
@@ -83,6 +83,12 @@ class App extends Component {
     })
   }
 
+  toggleMart = () => {
+    this.setState( (currentState) => {
+      return {showMart: !currentState.showMart}
+    });
+  }
+
   render() {
     return (
       <div>
@@ -100,7 +106,7 @@ class App extends Component {
           <div className={`content-container ${this.state.showForm ? "content-container__is-open" : ""}`}>
 
             <form className="add-entry container" onSubmit={this.handleSubmit}>
-              <Emoji emoji={this.state.emoji} size={32} onClick={this.openMart}/>
+              <Emoji emoji={this.state.emoji} size={32} onClick={this.toggleMart}/>
 
               <Picker
                 title=''
@@ -113,6 +119,7 @@ class App extends Component {
                 color='#0099FF'
                 perLine='7'
                 onSelect={this.addEmoji}
+                className={`emoji-picker ${this.state.showMart ? "show-emojimart" : ""}`}
               />
               <input
                 className="input-name"

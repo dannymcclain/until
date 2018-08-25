@@ -1,5 +1,5 @@
 import React from 'react';
-import { Emoji } from './emoji-mart'
+import { Emoji } from './../../../node_modules/emoji-mart'
 import DeleteButton from './../deleteButton';
 
 const EventItem = ({emoji, name, date, daysUntil, handleDelete}) => (

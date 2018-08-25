@@ -180,6 +180,16 @@ form.add-entry {
   align-items: center; */
 }
 
+.add-entry .emoji-mart-emoji {
+  cursor: pointer;
+}
+.emoji-picker {
+  opacity: 0;
+}
+.emoji-picker .show-emojimart {
+  opacity: 1;
+}
+
 input {
   outline: none;
   font-size: 13px;
