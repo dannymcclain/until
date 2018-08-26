@@ -59,7 +59,8 @@ class App extends Component {
       myDates: [myEvent, ...this.state.myDates],
       value: '',
       selectedDate: null,
-      // showForm: false
+      showMart: false,
+      emoji: 'wave',
     });
   }
 
@@ -80,7 +81,7 @@ class App extends Component {
     this.setState ({
       emoji: emoji,
       showMart: false
-    })
+    }, () => console.log(emoji));
   }
 
   toggleMart = () => {
@@ -103,6 +104,7 @@ class App extends Component {
           </div>
         </header>
         <div className="container">
+          <div className={`content-container ${this.state.showForm ? 'content-container__is-open' : ''}`}>
             <form className="add-entry container" onSubmit={this.handleSubmit}>
               <Emoji emoji={this.state.emoji} size={32} onClick={this.toggleMart}/>
 
@@ -112,9 +114,10 @@ class App extends Component {
                 style={
                   {
                   position: 'absolute', 
-                  top: '120px', 
+                  top: '85px', 
                   left: '0',
-                  opacity: `${this.state.showMart ? '1' : '0'}`,
+                  zIndex: '10',
+                  visibility: `${this.state.showMart ? 'visible' : 'hidden'}`,
                   }
                 }
                 color='#0099FF'
@@ -141,9 +144,9 @@ class App extends Component {
 
             <div className="event-list">
             <ReactCSSTransitionGroup
-            transitionName="fadeIn"
+            transitionName="comeIn"
             transitionEnterTimeout={300}
-            transitionLeaveTimeout={100}>        
+            transitionLeaveTimeout={300}>        
                 {this.state.myDates.map((event) => (
                   <EventItem
                     key={event.name}
@@ -152,6 +155,7 @@ class App extends Component {
                   />
                 ))}
               </ReactCSSTransitionGroup>
+              </div>
               </div>
             </div>
       </div>
