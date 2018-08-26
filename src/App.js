@@ -103,7 +103,7 @@ class App extends Component {
             <div></div>
           </div>
         </header>
-        <div className="container">
+        {/* <div className="container"> */}
           <div className={`content-container ${this.state.showForm ? 'content-container__is-open' : ''}`}>
             <form className="add-entry container" onSubmit={this.handleSubmit}>
               <Emoji emoji={this.state.emoji} size={32} onClick={this.toggleMart}/>
@@ -158,7 +158,7 @@ class App extends Component {
               </div>
               </div>
             </div>
-      </div>
+      // </div>
     );
   }
 }

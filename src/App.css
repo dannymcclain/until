@@ -94,46 +94,61 @@ header .container {
   transform-origin: center center;
 }
 
+.event-list {
+  width: 100%;
+  max-width: 900px;  
+  margin: 0 auto;
+}
 
+.event-list > span {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
 
 .event-list .event-item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 
   background: #FFFFFF;
   box-shadow: 0 2px 0 0 rgba(0,0,0,0.10);
-  padding: 20px;
+  padding: 30px;
   border-radius: 9px;
-  margin: 30px 0 0;
+  min-width: 160px;
+  margin: 30px 30px 0 0;
 }
 
+.event-list .emoji-mart-emoji {
+  margin-bottom: 5px;
+}
 .event-name {
   font-weight: bold;
   color: #000000;
   letter-spacing: -0.2px;
-  text-align: left;
+  margin: 10px 0;
 }
 
-.event-date {
+.event-list .event-date {
   font-weight: normal;
   font-size: 12px;
   color: #A1A5A6;
   letter-spacing: -0.2px;
-  text-align: left;
-  margin-left: 23px;
 }
 
-.days-until {
+.event-list .days-until {
   font-weight: 600;
   color: #0099FF;
   letter-spacing: -0.2px;
-  text-align: right;
+  margin-bottom: 20px
 }
 
-.event-right {
+.event-list .event-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;

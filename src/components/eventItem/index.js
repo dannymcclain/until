@@ -6,8 +6,8 @@ const EventItem = ({emoji, name, date, daysUntil, handleDelete}) => (
   <div className="event-item">
     <Emoji emoji={emoji} size={32} />
     <p className="event-name">{name}</p>
-    <p className="event-date">{date}</p>
     <p className="days-until">{daysUntil}</p>
+    <p className="event-date">{date}</p>
     <DeleteButton
       onDelete={handleDelete}
     />
