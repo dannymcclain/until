@@ -79,7 +79,8 @@ class App extends Component {
   addEmoji = (emoji) => {
     console.log(emoji);
     this.setState ({
-      emoji: emoji
+      emoji: emoji,
+      showMart: false
     })
   }
 
@@ -111,15 +112,17 @@ class App extends Component {
               <Picker
                 title=''
                 showPreview={false}
-                style={{ 
+                style={
+                  {
                   position: 'absolute', 
                   top: '120px', 
                   left: '0',
-                }}
+                  opacity: `${this.state.showMart ? '1' : '0'}`,
+                  }
+                }
                 color='#0099FF'
                 perLine='7'
                 onSelect={this.addEmoji}
-                className={`emoji-picker ${this.state.showMart ? "show-emojimart" : ""}`}
               />
               <input
                 className="input-name"
