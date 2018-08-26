@@ -77,7 +77,6 @@ class App extends Component {
   }
 
   addEmoji = (emoji) => {
-    console.log(emoji);
     this.setState ({
       emoji: emoji,
       showMart: false
@@ -104,8 +103,6 @@ class App extends Component {
           </div>
         </header>
         <div className="container">
-          <div className={`content-container ${this.state.showForm ? "content-container__is-open" : ""}`}>
-
             <form className="add-entry container" onSubmit={this.handleSubmit}>
               <Emoji emoji={this.state.emoji} size={32} onClick={this.toggleMart}/>
 
@@ -157,7 +154,6 @@ class App extends Component {
               </ReactCSSTransitionGroup>
               </div>
             </div>
-        </div>
       </div>
     );
   }
