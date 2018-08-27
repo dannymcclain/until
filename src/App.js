@@ -5,7 +5,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker, Emoji } from 'emoji-mart';
+import uuid from 'uuid/v1';
 import ActionButton from './components/actionButton';
+import AddCard from './components/addCard';
 import EventItem from './components/eventItem';
 import './App.css';
 
@@ -50,6 +52,7 @@ class App extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const myEvent = {
+      id: uuid(),
       emoji: this.state.emoji,
       name: this.state.value, 
       date: this.state.selectedDate.format("MMM D"), 
@@ -70,8 +73,8 @@ class App extends Component {
     });
   }
 
-  removeItem = (name) => {
-    const filteredDates = this.state.myDates.filter( (item) => item.name !== name);
+  removeItem = ({id}) => {
+    const filteredDates = this.state.myDates.filter( (item) => item.id !== id);
     this.setState ({
       myDates: filteredDates
     })
@@ -95,15 +98,14 @@ class App extends Component {
       <div>
         <header>
           <div className="container">
-            <ActionButton 
-              handleClick={this.toggleMenu} 
-              isActive={this.state.showForm}
-            />
+              <ActionButton 
+                  handleClick={this.toggleMenu} 
+                  isActive={this.state.showForm}
+              />
             <h1>Until</h1>
             <div></div>
           </div>
         </header>
-        {/* <div className="container"> */}
           <div className={`content-container ${this.state.showForm ? 'content-container__is-open' : ''}`}>
             <form className="add-entry container" onSubmit={this.handleSubmit}>
               <Emoji emoji={this.state.emoji} size={32} onClick={this.toggleMart}/>
@@ -142,23 +144,20 @@ class App extends Component {
               <button type="submit" className="btn-submit">Add</button>
             </form>
 
-            <div className="event-list">
-            <ReactCSSTransitionGroup
-            transitionName="comeIn"
-            transitionEnterTimeout={300}
-            transitionLeaveTimeout={300}>        
+            <div className="event-list">     
                 {this.state.myDates.map((event) => (
                   <EventItem
-                    key={event.name}
+                    key={event.id}
                     {...event}
-                    handleDelete={() => this.removeItem(event.name)}
+                    handleDelete={() => this.removeItem(event)}
                   />
                 ))}
-              </ReactCSSTransitionGroup>
+                <AddCard handleClick={this.toggleMenu} 
+                  isActive={this.state.showForm}
+                />
               </div>
               </div>
             </div>
-      // </div>
     );
   }
 }
