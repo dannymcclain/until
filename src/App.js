@@ -143,7 +143,6 @@ class App extends Component {
               />
               <button type="submit" className="btn-submit">Add</button>
             </form>
-
             <div className="event-list">     
                 {this.state.myDates.map((event) => (
                   <EventItem
