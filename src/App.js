@@ -56,7 +56,7 @@ class App extends Component {
       emoji: this.state.emoji,
       name: this.state.value, 
       date: this.state.selectedDate.format("MMM D"), 
-      daysUntil: Math.round(this.state.selectedDate.diff(moment(), 'days', true)) + ' days'
+      daysUntil: moment(this.state.selectedDate).fromNow()
     }
     this.setState({
       myDates: [myEvent, ...this.state.myDates],
