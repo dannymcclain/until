@@ -56,12 +56,11 @@ class App extends Component {
           
         <header>
           <div className="container">
-              <ActionButton 
-                  handleClick={this.toggleEditing} 
-                  isActive={this.state.showForm}
-              />
             <h1>Until</h1>
-            <div></div>
+            <ActionButton 
+              handleClick={this.toggleEditing} 
+              isActive={this.state.showForm}
+            />
           </div>
         </header> 
         <div className="event-list">     
