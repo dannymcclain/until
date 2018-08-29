@@ -6,16 +6,16 @@ import './styles.css';
 const EventItem = ({emoji, name, date, daysUntil, handleDelete}) => (
   <div className="event-item">
     <div>
-    <Emoji emoji={emoji} size={32} />
+      <div className="card-top">
+        <Emoji emoji={emoji} size={32} />
+        <DeleteButton onDelete={handleDelete}/>
+      </div>
     <p className="event-name">{name}</p>
     </div>
     <div>
     <p className="days-until">{daysUntil}</p>
     <p className="event-date">{date}</p>
     </div>
-    <DeleteButton
-      onDelete={handleDelete}
-    />
   </div>
 )
 

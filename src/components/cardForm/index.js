@@ -62,6 +62,7 @@ export class CardForm extends Component {
   render() {
     return (
       <form className="add-entry" onSubmit={this.handleSubmit}>
+        <label>Emoji</label>
         <Emoji emoji={this.state.emoji} size={32} onClick={this.toggleMart}/>
         <Picker
           title=''
@@ -79,6 +80,7 @@ export class CardForm extends Component {
           perLine='7'
           onSelect={this.addEmoji}
         />
+        <label>Name</label>
         <input
           className="input-name"
           type="text"
@@ -86,15 +88,16 @@ export class CardForm extends Component {
           onChange={this.handleNameChange}
           placeholder="Name"
           />
-        <DatePicker
-          selected={this.state.selectedDate}
-          onChange={this.handleDateChange}
-          placeholderText="Date"
-          calendarClassName="untilCal"
-          dateFormat="MMM D YY"
-          minDate={moment().add(1, 'days')}
-        />
-        <button type="submit" className="btn-submit">Add</button>
+          <label>Date</label>
+          <DatePicker
+            selected={this.state.selectedDate}
+            onChange={this.handleDateChange}
+            placeholderText="Date"
+            calendarClassName="untilCal"
+            dateFormat="MMM D YY"
+            minDate={moment().add(1, 'days')}
+          />
+        <button type="submit" className="btn-submit" disabled={!this.state.value ||this.state.selectedDate === null}>Add</button>
       </form>
     )
   }

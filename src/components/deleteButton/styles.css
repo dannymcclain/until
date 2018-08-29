@@ -2,9 +2,6 @@
   transition: opacity 300ms linear;
   cursor: pointer;
   transition: color 100ms ease;
-  position: absolute;
-  top: 35px;
-  right: 30px;
 }
 
 .delete:hover path {

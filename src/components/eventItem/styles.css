@@ -35,3 +35,13 @@
   letter-spacing: -0.2px;
   margin: 0 0 5px 0;
 }
+.event-item div {
+  width: 100%;
+}
+.card-top {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
