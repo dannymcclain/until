@@ -9,7 +9,7 @@ import './styles.css';
 
 export class CardForm extends Component {
   state = {
-    emoji: 'wave',
+    emoji: 'calendar',
     value: '',
     selectedDate: null,
     showMart: false
@@ -25,7 +25,7 @@ export class CardForm extends Component {
     this.setState ({
       emoji: emoji,
       showMart: false
-    }, () => console.log(emoji));
+    });
   }
 
   
