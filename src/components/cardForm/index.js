@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker, Emoji } from 'emoji-mart';
+import './styles.css';
 
 export class CardForm extends Component {
   state = {
@@ -60,7 +61,7 @@ export class CardForm extends Component {
 
   render() {
     return (
-      <form className="add-entry container" onSubmit={this.handleSubmit}>
+      <form className="add-entry" onSubmit={this.handleSubmit}>
         <Emoji emoji={this.state.emoji} size={32} onClick={this.toggleMart}/>
         <Picker
           title=''
