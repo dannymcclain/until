@@ -36,16 +36,3 @@
   letter-spacing: -0.2px;
   margin: 0 0 5px 0;
 }
-
-.event-item .delete {
-  transition: opacity 300ms linear;
-  cursor: pointer;
-  transition: color 100ms ease;
-  position: absolute;
-  top: 35px;
-  right: 30px;
-}
-
-.event-item .delete:hover path {
-  fill: rgb(255, 38, 74);
-}

@@ -1,0 +1,35 @@
+.add-card {
+  opacity: 0.3;
+  min-height: 203px;
+  outline: none;
+  border: 2px dashed #fff;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1);
+  transition: opacity 200ms ease-out, transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.add-card:hover {
+  opacity: 1;
+}
+
+.add-card:active {
+  transform: scale(.95);
+}
+
+.add-card .plus-icon .stick {
+  display: block;
+  height: 2px;
+  width: 20px;
+  background: #fff;
+  border-radius: 1px;
+}
+
+.add-card .plus-icon .stick:first-child {
+  transform: rotate(90deg) translateX(2px);
+  transform-origin: center center;
+}
