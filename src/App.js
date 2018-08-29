@@ -63,22 +63,20 @@ class App extends Component {
             <h1>Until</h1>
             <div></div>
           </div>
-        </header>
-        
-            
-            <div className="event-list">     
-                {this.state.myDates.map((event) => (
-                  <EventItem
-                    key={event.id}
-                    {...event}
-                    handleDelete={() => this.removeItem(event)}
-                  />
-                ))}
-                <AddCard handleClick={this.toggleEditing} 
-                  isActive={this.state.showForm}
-                />
-              </div>
-            </div>
+        </header> 
+        <div className="event-list">     
+            {this.state.myDates.map((event) => (
+              <EventItem
+                key={event.id}
+                {...event}
+                handleDelete={() => this.removeItem(event)}
+              />
+            ))}
+            <AddCard handleClick={this.toggleEditing} 
+              isActive={this.state.showForm}
+            />
+        </div>
+      </div>
     );
   }
 }
