@@ -18,7 +18,7 @@
 }
 
 .add-card:active {
-  transform: scale(.95);
+  transform: scale(.98);
 }
 
 .add-card .plus-icon .stick {
