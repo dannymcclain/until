@@ -4,7 +4,7 @@ export class CardForm extends Component {
   render() {
     return (
       <div>
-        
+        I am form.
       </div>
     )
   }

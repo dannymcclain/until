@@ -1,0 +1,51 @@
+.event-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 140px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.10);
+  padding: 30px;
+  border-radius: 9px;
+}
+
+.emoji-mart-emoji {
+  margin-bottom: 5px;
+}
+
+.event-name {
+  font-weight: bold;
+  color: #000000;
+  letter-spacing: -0.2px;
+  margin: 10px 0;
+}
+
+.event-date {
+  font-weight: normal;
+  font-size: 12px;
+  color: #A1A5A6;
+  letter-spacing: -0.2px;
+}
+
+.days-until {
+  font-weight: 600;
+  color: #0099FF;
+  letter-spacing: -0.2px;
+  margin: 0 0 5px 0;
+}
+
+.event-item .delete {
+  transition: opacity 300ms linear;
+  cursor: pointer;
+  transition: color 100ms ease;
+  position: absolute;
+  top: 35px;
+  right: 30px;
+}
+
+.event-item .delete:hover path {
+  fill: rgb(255, 38, 74);
+}

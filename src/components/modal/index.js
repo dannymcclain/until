@@ -1,10 +1,11 @@
 import React from 'react'
 
-const Modal = () => {
+const Modal = (props) => {
   return (
-    <div className="overlay">
+    <div className={`overlay ${props.isShowing ? 'is-showing' : ''}`}>
       <div className="modal-wrapper">
-        {this.props.children}
+        {props.children}
+        <button onClick={props.handleClose}>Close</button>
       </div>
     </div>
   )

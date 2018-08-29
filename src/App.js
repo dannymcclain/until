@@ -9,6 +9,8 @@ import uuid from 'uuid/v1';
 import ActionButton from './components/actionButton';
 import AddCard from './components/addCard';
 import EventItem from './components/eventItem';
+import CardForm from './components/cardForm';
+import Modal from './components/modal';
 import './App.css';
 
 class App extends Component {
@@ -67,7 +69,7 @@ class App extends Component {
     });
   }
 
-  toggleMenu = () => {
+  toggleEditing = () => {
     this.setState( (currentState) => {
       return {showForm: !currentState.showForm}
     });
@@ -96,53 +98,59 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Modal
+          isShowing={this.state.showForm}
+          handleClose={this.toggleEditing}
+        >
+          <form className="add-entry container" onSubmit={this.handleSubmit}>
+            <Emoji emoji={this.state.emoji} size={32} onClick={this.toggleMart}/>
+            <Picker
+              title=''
+              showPreview={false}
+              style={
+                {
+                position: 'absolute', 
+                top: '85px', 
+                left: '0',
+                zIndex: '10',
+                visibility: `${this.state.showMart ? 'visible' : 'hidden'}`,
+                }
+              }
+              color='#0099FF'
+              perLine='7'
+              onSelect={this.addEmoji}
+            />
+            <input
+              className="input-name"
+              type="text"
+              value={this.state.value}
+              onChange={this.handleNameChange}
+              placeholder="Name"
+              />
+            <DatePicker
+              selected={this.state.selectedDate}
+              onChange={this.handleDateChange}
+              placeholderText="Date"
+              calendarClassName="untilCal"
+              dateFormat="MMM D YY"
+              minDate={moment().add(1, 'days')}
+            />
+            <button type="submit" className="btn-submit">Add</button>
+          </form>
+        </Modal>
+          
         <header>
           <div className="container">
               <ActionButton 
-                  handleClick={this.toggleMenu} 
+                  handleClick={this.toggleEditing} 
                   isActive={this.state.showForm}
               />
             <h1>Until</h1>
             <div></div>
           </div>
         </header>
-          <div className={`content-container ${this.state.showForm ? 'content-container__is-open' : ''}`}>
-            <form className="add-entry container" onSubmit={this.handleSubmit}>
-              <Emoji emoji={this.state.emoji} size={32} onClick={this.toggleMart}/>
-
-              <Picker
-                title=''
-                showPreview={false}
-                style={
-                  {
-                  position: 'absolute', 
-                  top: '85px', 
-                  left: '0',
-                  zIndex: '10',
-                  visibility: `${this.state.showMart ? 'visible' : 'hidden'}`,
-                  }
-                }
-                color='#0099FF'
-                perLine='7'
-                onSelect={this.addEmoji}
-              />
-              <input
-                className="input-name"
-                type="text"
-                value={this.state.value}
-                onChange={this.handleNameChange}
-                placeholder="Name"
-                />
-              <DatePicker
-                selected={this.state.selectedDate}
-                onChange={this.handleDateChange}
-                placeholderText="Date"
-                calendarClassName="untilCal"
-                dateFormat="MMM D YY"
-                minDate={moment().add(1, 'days')}
-              />
-              <button type="submit" className="btn-submit">Add</button>
-            </form>
+        
+            
             <div className="event-list">     
                 {this.state.myDates.map((event) => (
                   <EventItem
@@ -151,10 +159,9 @@ class App extends Component {
                     handleDelete={() => this.removeItem(event)}
                   />
                 ))}
-                <AddCard handleClick={this.toggleMenu} 
+                <AddCard handleClick={this.toggleEditing} 
                   isActive={this.state.showForm}
                 />
-              </div>
               </div>
             </div>
     );

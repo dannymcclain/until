@@ -47,16 +47,6 @@ header .container {
   align-items: center;
 }
 
-.content-container {
-  transform: translateY(-105px);
-  transition: transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.1);
-  border-radius: 0 0 5px 5px;
-}
-
-.content-container__is-open {
-  transform: translateY(0);
-}
-
 .add-card {
   opacity: 0.3;
   min-height: 203px;
@@ -130,15 +120,6 @@ header .container {
   transform-origin: center center;
 }
 
-.event-list {
-  max-width: 900px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  grid-gap: 30px;
-  padding: 0 30px 0;
-}
-
 @media(max-width: 480px) {
   .event-list {
     grid-gap: 10px;
@@ -146,63 +127,46 @@ header .container {
   }
 }
 
-
-.event-list .event-item {
-  position: relative;
+.overlay {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  min-height: 140px;
-  background: #FFFFFF;
-  box-shadow: 0 2px 0 0 rgba(0,0,0,0.10);
-  padding: 30px 30px 60px;
-  border-radius: 9px;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  z-index: 9;
+  visibility: hidden;
+  opacity: 0;
 }
 
-.event-list .emoji-mart-emoji {
-  margin-bottom: 5px;
-}
-.event-name {
-  font-weight: bold;
-  color: #000000;
-  letter-spacing: -0.2px;
-  margin: 10px 0;
+.overlay.is-showing {
+  visibility: visible;
+  z-index: 11;
+  opacity: 1;
 }
 
-.event-list .event-date {
-  font-weight: normal;
-  font-size: 12px;
-  color: #A1A5A6;
-  letter-spacing: -0.2px;
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
+.overlay .modal-wrapper {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 250ms 100ms ease-in-out, transform 350ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.11);
 }
 
-.event-list .days-until {
-  font-weight: 600;
-  color: #0099FF;
-  letter-spacing: -0.2px;
-  position: absolute;
-  bottom: 50px;
-  left: 30px;
+.overlay.is-showing .modal-wrapper {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.event-list .event-item .delete {
-  transition: opacity 300ms linear;
-  cursor: pointer;
-  transition: color 100ms ease;
-  position: absolute;
-  top: 35px;
-  right: 30px;
+.event-list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-rows: 1fr;
+  grid-gap: 30px;
+  padding: 0 30px 0;
+  margin-top: 40px;
 }
-
-.event-list .event-item .delete:hover path {
-  fill: rgb(255, 38, 74);
-}
-
 
 form.add-entry {
   display: flex;
