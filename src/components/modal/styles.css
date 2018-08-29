@@ -10,7 +10,7 @@
   z-index: 11;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 200ms ease;
+  transition: opacity 150ms linear;
 }
 
 .overlay.is-showing {
@@ -20,12 +20,57 @@
 
 .overlay .modal-wrapper {
   opacity: 0;
-  transform: translateY(100%);
+  transform: scale(0.2);
   transition: opacity 250ms 250ms ease-in-out, transform 350ms 250ms cubic-bezier(0.175, 0.885, 0.32, 1.11);
 }
 
 .overlay.is-showing .modal-wrapper {
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1);
   transition: opacity 250ms 250ms ease-in-out, transform 350ms 250ms cubic-bezier(0.175, 0.885, 0.32, 1.11);
 }
+
+.modal-wrapper {
+  background: #FFFFFF;
+  box-shadow: 0 8px 20px 0 rgba(0,0,0,0.20);
+  padding: 30px;
+  border-radius: 9px;
+  padding: 30px;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  outline: none;
+  border: none;
+  color: #A1A5A6;
+  cursor: pointer;
+  transform: scale(1);
+  transition: color 100ms ease-out, transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.11);
+}
+
+.modal-close:hover {
+  color: #0099ff;
+}
+.modal-close:active {
+  transform: scale(.9);
+}
+/* 
+.x-icon .stick {
+  display: block;
+  height: 2px;
+  width: 20px;
+  background: #A1A5A6;
+  border-radius: 1px;
+}
+
+.x-icon .stick:first-child {
+  transform: rotate(45deg);
+  transform-origin: center center;
+}
+.x-icon .stick:last-child {
+  transform: rotate(-45deg);
+  transform-origin: center center;
+} */

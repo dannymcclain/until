@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import uuid from 'uuid/v1';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker';
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker, Emoji } from 'emoji-mart';
 import './styles.css';
@@ -55,7 +55,7 @@ export class CardForm extends Component {
       value: '',
       selectedDate: null,
       showMart: false,
-      emoji: 'wave',
+      emoji: 'calendar',
     });
   }
 
