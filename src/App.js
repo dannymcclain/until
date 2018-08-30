@@ -27,6 +27,7 @@ class App extends Component {
   }
 
   handleSubmit = (myEvent) => {
+    // if myEvent.id equals any object's ID in myDates, then don't ADD myEvent, UPDATE the event with that ID. Otherwise, add the event.
     this.setState({
       myDates: [myEvent, ...this.state.myDates],
       showForm: false
@@ -82,7 +83,7 @@ class App extends Component {
             />
           </div>
         </header> 
-        <div className="event-list">     
+        <div className="event-list">
             {this.state.myDates.map((event) => (
               <EventItem
                 key={event.id}
@@ -91,7 +92,7 @@ class App extends Component {
                 handleEdit={() => this.handleEdit(event)}
               />
             ))}
-            <AddCard handleClick={this.toggleEditing} 
+            <AddCard handleClick={this.toggleEditing}
               isActive={this.state.showForm}
             />
         </div>

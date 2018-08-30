@@ -24,11 +24,12 @@ export class CardForm extends Component {
         showMart: false
       }
     }
-    if (props.currentEvent) {
+    if (props.currentEvent && props.currentEvent.id !== state.id) {
       return {
+        id: props.currentEvent.id,
         emoji: props.currentEvent.emoji,
         value: props.currentEvent.name,
-        selectedDate: moment(props.currentEvent.date)
+        selectedDate: moment(props.currentEvent.date, "MMM D, YYYY")
       }
     }
     return {}
@@ -47,7 +48,6 @@ export class CardForm extends Component {
     });
   }
 
-  
   handleNameChange = (event) => {
     this.setState({value: event.target.value});
   }
@@ -61,10 +61,10 @@ export class CardForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const myEvent = {
-      id: uuid(),
+      id: event.id || uuid(),
       emoji: this.state.emoji,
       name: this.state.value, 
-      date: this.state.selectedDate.format("MMM D YYYY"), 
+      date: this.state.selectedDate.format("MMM D, YYYY"), 
       daysUntil: moment(this.state.selectedDate).fromNow()
     }
     this.props.handleSubmit(myEvent);
@@ -83,7 +83,6 @@ export class CardForm extends Component {
   render() {
     return (
       <form className="add-entry" onSubmit={this.handleSubmit}>
-        <label>Emoji</label>
         <Emoji emoji={this.state.emoji} size={32} onClick={this.toggleMart}/>
         <Picker
           title=''
@@ -101,22 +100,20 @@ export class CardForm extends Component {
           perLine='7'
           onSelect={this.addEmoji}
         />
-        <label>Name</label>
         <input
           ref={ (htmlNode) => {this.props.innerRef(htmlNode)} }
           className="input-name"
           type="text"
           value={this.state.value}
           onChange={this.handleNameChange}
-          placeholder="Name"
+          placeholder="Untitled"
           />
-          <label>Date</label>
           <DatePicker
             selected={this.state.selectedDate}
             onChange={this.handleDateChange}
-            placeholderText="Date"
+            placeholderText="Select a Date"
             calendarClassName="untilCal"
-            dateFormat="MMM D YY"
+            dateFormat="MMM D, YY"
             minDate={moment().add(1, 'days')}
           />
         <button type="submit" className="btn-submit" disabled={!this.state.value ||this.state.selectedDate === null}>Add</button>

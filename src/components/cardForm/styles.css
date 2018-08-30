@@ -16,21 +16,37 @@ form.add-entry {
 .add-entry > .emoji-mart-emoji {
   cursor: pointer;
   margin-bottom: 20px;
+  padding: 4px;
+  border-radius: 3px;
 }
+
+.add-entry > .emoji-mart-emoji:hover {
+  background: #EBEFF0;
+}
+
 
 .add-entry input {
   outline: none;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: -0.2px;
   background: transparent;
-  padding: 10px 0;
+  padding: 0;
   border: none;
-  border-bottom: 1px solid #EBEDED;
-  transition: border-color 200ms ease-out;
   border-radius: 0;
   margin-bottom: 20px;
   min-width: 280px;
+}
+
+.add-entry .input-name {
+  font-weight: bold;
+  font-size: 28px;
+  color: #000000;
+  letter-spacing: -0.4px;
+}
+
+.add-entry .input-name:placeholder {
+  font-weight: bold;
+  font-size: 28px;
+  color: #C6CACC;
+  letter-spacing: -0.4px;
 }
 
 .add-entry input:focus {
