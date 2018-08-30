@@ -3,11 +3,12 @@ import { Emoji } from './../../../node_modules/emoji-mart'
 import DeleteButton from './../deleteButton';
 import './styles.css';
 
-const EventItem = ({emoji, name, date, daysUntil, handleDelete}) => (
+const EventItem = ({emoji, name, date, daysUntil, handleDelete, handleEdit}) => (
   <div className="event-item">
     <div>
       <div className="card-top">
         <Emoji emoji={emoji} size={32} />
+        <a href="#" onClick={handleEdit}>Edit</a>
         <DeleteButton onDelete={handleDelete}/>
       </div>
     <p className="event-name">{name}</p>

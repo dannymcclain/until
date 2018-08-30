@@ -11,6 +11,7 @@ class App extends Component {
   state = {
       myDates: [],
       showForm: false,
+      currentEvent: null
   }
 
   componentDidMount() {
@@ -51,15 +52,25 @@ class App extends Component {
     })
   }
 
+  handleEdit = (event) => {
+    this.setState({
+      currentEvent: event,
+      showForm: true
+    });
+  }
+
   render() {
     return (
       <div>
         <Modal
           isShowing={this.state.showForm}
           handleClose={this.toggleEditing} >
-          <CardForm 
-          innerRef={this.bindInnerRef}
-          handleSubmit={this.handleSubmit} />
+            <CardForm 
+            innerRef={this.bindInnerRef}
+            handleSubmit={this.handleSubmit} 
+            isShowing={this.state.showForm}
+            currentEvent={this.state.currentEvent}
+            />
         </Modal>
           
         <header>
@@ -77,6 +88,7 @@ class App extends Component {
                 key={event.id}
                 {...event}
                 handleDelete={() => this.removeItem(event)}
+                handleEdit={() => this.handleEdit(event)}
               />
             ))}
             <AddCard handleClick={this.toggleEditing} 

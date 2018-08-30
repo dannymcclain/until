@@ -15,6 +15,25 @@ export class CardForm extends Component {
     showMart: false
   };
 
+  static getDerivedStateFromProps(props, state) {
+    if (!props.isShowing) {
+      return {
+        emoji: 'calendar',
+        value: '',
+        selectedDate: null,
+        showMart: false
+      }
+    }
+    if (props.currentEvent) {
+      return {
+        emoji: props.currentEvent.emoji,
+        value: props.currentEvent.name,
+        selectedDate: moment(props.currentEvent.date)
+      }
+    }
+    return {}
+  }
+
   toggleMart = () => {
     this.setState( (currentState) => {
       return {showMart: !currentState.showMart}
@@ -45,12 +64,14 @@ export class CardForm extends Component {
       id: uuid(),
       emoji: this.state.emoji,
       name: this.state.value, 
-      date: this.state.selectedDate.format("MMM D"), 
+      date: this.state.selectedDate.format("MMM D YYYY"), 
       daysUntil: moment(this.state.selectedDate).fromNow()
     }
-
     this.props.handleSubmit(myEvent);
+    this.resetForm();
+  }
 
+  resetForm = () => {
     this.setState({
       value: '',
       selectedDate: null,
