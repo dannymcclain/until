@@ -47,3 +47,16 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.edit-button {
+  color: #C6CACC;
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.edit-button:hover {
+  color: #0099ff;
+}

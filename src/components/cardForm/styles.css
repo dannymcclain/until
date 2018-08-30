@@ -25,7 +25,7 @@ form.add-entry {
 }
 
 
-.add-entry input {
+.add-entry .input-name, .react-datepicker__input-container input {
   outline: none;
   background: transparent;
   padding: 0;
@@ -42,7 +42,14 @@ form.add-entry {
   letter-spacing: -0.4px;
 }
 
-.add-entry .input-name:placeholder {
+.react-datepicker__input-container input {
+  font-weight: 500;
+  font-size: 14px;
+  color: #8B8E8F;
+  letter-spacing: -0.2px;
+}
+
+.add-entry .input-name::placeholder {
   font-weight: bold;
   font-size: 28px;
   color: #C6CACC;
@@ -53,22 +60,20 @@ form.add-entry {
   border-color: #0099ff;
 }
 
-.add-entry input::placeholder {
-  color: #999;
-}
-
 .add-entry button.btn-submit{
+  font-size: 14px;
+  letter-spacing: -0.2px;
   outline: none;
   border-radius: 5px;
   background: #0099ff;
   color: #fff;
-  padding: 10px 14px;
+  padding: 15px 35px;
   font-weight: bold;
   border: none;
   cursor: pointer;
   transform: scale(1);
   transition: background 200ms ease, transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  margin-bottom: 0;
+  margin: 20px 0 0 0;
 }
 
 .add-entry button.btn-submit:hover{
@@ -109,4 +114,20 @@ form.add-entry {
   border-top-right-radius: 0.3rem;
   padding-top: 8px;
   position: relative;
+}
+
+.untilCal .react-datepicker__day--selected, .untilCal .react-datepicker__day--in-selecting-range, .untilCal .react-datepicker__day--in-range {
+  border-radius: 5px;
+  background-color: #0099ff;
+  color: #fff;
+}
+
+.untilCal .react-datepicker__day--keyboard-selected {
+  border-radius: 0.3rem;
+  background-color: #0099ff;
+  color: #fff;
+}
+
+.untilCal .react-datepicker__day--keyboard-selected:hover {
+  background-color: #008AE6;
 }

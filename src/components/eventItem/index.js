@@ -8,8 +8,8 @@ const EventItem = ({emoji, name, date, daysUntil, handleDelete, handleEdit}) => 
     <div>
       <div className="card-top">
         <Emoji emoji={emoji} size={32} />
-        <a href="#" onClick={handleEdit}>Edit</a>
-        <DeleteButton onDelete={handleDelete}/>
+          <button className="edit-button" onClick={handleEdit}>Edit</button>
+          <DeleteButton onDelete={handleDelete}/>
       </div>
     <p className="event-name">{name}</p>
     </div>

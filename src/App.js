@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ActionButton from './components/actionButton';
 import AddCard from './components/addCard';
 import EventItem from './components/eventItem';
@@ -9,7 +8,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-      myDates: [],
+      myDates: {},
       showForm: false,
       currentEvent: null
   }
@@ -27,16 +26,22 @@ class App extends Component {
   }
 
   handleSubmit = (myEvent) => {
-    // if myEvent.id equals any object's ID in myDates, then don't ADD myEvent, UPDATE the event with that ID. Otherwise, add the event.
     this.setState({
-      myDates: [myEvent, ...this.state.myDates],
-      showForm: false
+      myDates: {
+        ...this.state.myDates,
+        [myEvent.id]: myEvent
+      },
+      showForm: false,
+      currentEvent: null
     });
   }
 
   toggleEditing = () => {
     this.setState( (currentState) => {
-      return {showForm: !currentState.showForm}
+      return {
+        showForm: !currentState.showForm,
+        currentEvent: null
+      }
     }, (state) => {
       this.state.showForm && this.nameInput.focus()
     });
@@ -47,9 +52,10 @@ class App extends Component {
   }
 
   removeItem = ({id}) => {
-    const filteredDates = this.state.myDates.filter( (item) => item.id !== id);
+    const datesCopy = {...this.state.myDates};
+    delete datesCopy[id];
     this.setState ({
-      myDates: filteredDates
+      myDates: datesCopy
     })
   }
 
@@ -84,7 +90,7 @@ class App extends Component {
           </div>
         </header> 
         <div className="event-list">
-            {this.state.myDates.map((event) => (
+            {Object.values(this.state.myDates).map((event) => (
               <EventItem
                 key={event.id}
                 {...event}

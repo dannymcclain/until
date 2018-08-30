@@ -9,7 +9,8 @@ import './styles.css';
 
 export class CardForm extends Component {
   state = {
-    emoji: 'calendar',
+    id: null,
+    emoji: 'wave',
     value: '',
     selectedDate: null,
     showMart: false
@@ -18,7 +19,8 @@ export class CardForm extends Component {
   static getDerivedStateFromProps(props, state) {
     if (!props.isShowing) {
       return {
-        emoji: 'calendar',
+        id: null,
+        emoji: 'wave',
         value: '',
         selectedDate: null,
         showMart: false
@@ -60,8 +62,9 @@ export class CardForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    
     const myEvent = {
-      id: event.id || uuid(),
+      id: this.state.id || uuid(),
       emoji: this.state.emoji,
       name: this.state.value, 
       date: this.state.selectedDate.format("MMM D, YYYY"), 
@@ -73,10 +76,11 @@ export class CardForm extends Component {
 
   resetForm = () => {
     this.setState({
+      id: null,
       value: '',
       selectedDate: null,
       showMart: false,
-      emoji: 'calendar',
+      emoji: 'wave',
     });
   }
 
@@ -90,8 +94,8 @@ export class CardForm extends Component {
           style={
             {
             position: 'absolute', 
-            top: '85px', 
-            left: '0',
+            top: '75px', 
+            left: '-82px',
             zIndex: '10',
             visibility: `${this.state.showMart ? 'visible' : 'hidden'}`,
             }
@@ -113,10 +117,10 @@ export class CardForm extends Component {
             onChange={this.handleDateChange}
             placeholderText="Select a Date"
             calendarClassName="untilCal"
-            dateFormat="MMM D, YY"
+            dateFormat="MMM D, YYYY"
             minDate={moment().add(1, 'days')}
           />
-        <button type="submit" className="btn-submit" disabled={!this.state.value ||this.state.selectedDate === null}>Add</button>
+        <button type="submit" className="btn-submit" disabled={!this.state.value ||this.state.selectedDate === null}>{this.state.id ? 'Save Changes' : 'Add Event'}</button>
       </form>
     )
   }
