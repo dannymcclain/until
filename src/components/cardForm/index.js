@@ -82,6 +82,7 @@ export class CardForm extends Component {
         />
         <label>Name</label>
         <input
+          ref={ (htmlNode) => {this.props.innerRef(htmlNode)} }
           className="input-name"
           type="text"
           value={this.state.value}

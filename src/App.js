@@ -35,7 +35,13 @@ class App extends Component {
   toggleEditing = () => {
     this.setState( (currentState) => {
       return {showForm: !currentState.showForm}
+    }, (state) => {
+      this.state.showForm && this.nameInput.focus()
     });
+  }
+
+  bindInnerRef = (htmlNode) => {
+    this.nameInput = htmlNode;
   }
 
   removeItem = ({id}) => {
@@ -51,7 +57,9 @@ class App extends Component {
         <Modal
           isShowing={this.state.showForm}
           handleClose={this.toggleEditing} >
-          <CardForm handleSubmit={this.handleSubmit} />
+          <CardForm 
+          innerRef={this.bindInnerRef}
+          handleSubmit={this.handleSubmit} />
         </Modal>
           
         <header>
