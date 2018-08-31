@@ -6,13 +6,6 @@ form.add-entry {
   align-items: flex-start;
 }
 
-.add-entry label {
-  font-weight: 600;
-  color: #000;
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-
 .add-entry > .emoji-mart-emoji {
   cursor: pointer;
   margin-bottom: 20px;
@@ -32,7 +25,17 @@ form.add-entry {
   border: none;
   border-radius: 0;
   margin-bottom: 20px;
-  min-width: 280px;
+  width: 280px;
+}
+
+.react-datepicker__input-container input {
+  padding: 12px;
+  background: #F2F4F5;
+  border-radius: 3px;
+}
+
+.react-datepicker__input-container input::placeholder {
+  color: #BABEBF;
 }
 
 .add-entry .input-name {
@@ -45,7 +48,7 @@ form.add-entry {
 .react-datepicker__input-container input {
   font-weight: 500;
   font-size: 14px;
-  color: #8B8E8F;
+  color: #000;
   letter-spacing: -0.2px;
 }
 

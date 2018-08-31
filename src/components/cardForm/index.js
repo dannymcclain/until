@@ -94,8 +94,8 @@ export class CardForm extends Component {
           style={
             {
             position: 'absolute', 
-            top: '75px', 
-            left: '-82px',
+            top: '85px', 
+            left: '-75px',
             zIndex: '10',
             visibility: `${this.state.showMart ? 'visible' : 'hidden'}`,
             }
@@ -115,7 +115,7 @@ export class CardForm extends Component {
           <DatePicker
             selected={this.state.selectedDate}
             onChange={this.handleDateChange}
-            placeholderText="Select a Date"
+            placeholderText={moment().format("MMM D, YYYY")}
             calendarClassName="untilCal"
             dateFormat="MMM D, YYYY"
             minDate={moment().add(1, 'days')}
