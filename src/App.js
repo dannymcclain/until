@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import moment from 'moment';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ActionButton from './components/actionButton';
 import AddCard from './components/addCard';
 import EventItem from './components/eventItem';
@@ -20,7 +22,20 @@ class App extends Component {
         myDates: JSON.parse(localState)
       })
     }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.code === 'Escape') {
+        this.setState({
+          showForm: false
+        })
+      }
+    });
   }
+
+  componentWillUnmount() {
+    document.addEventListener('keydown');
+  }
+
   componentDidUpdate() {
     localStorage.setItem("state", JSON.stringify(this.state.myDates));
   }
@@ -42,7 +57,7 @@ class App extends Component {
         showForm: !currentState.showForm,
         currentEvent: null
       }
-    }, (state) => {
+    }, () => {
       this.state.showForm && this.nameInput.focus()
     });
   }
@@ -66,6 +81,30 @@ class App extends Component {
     });
   }
 
+  eventFormatter = (event) => {
+    let eventOverrides = {};
+    let eventDate = moment(event.date, 'MMM D, YYYY');
+    let today = moment();
+    if (eventDate.isBefore(today, 'day')) {
+      eventOverrides.status = 'past';
+    } else if (eventDate.isSame(today, 'day')){
+      eventOverrides.status = 'present';
+      eventOverrides.daysUntil = 'Today!';
+    } else {
+      eventOverrides.status = 'future';
+    }
+
+    return {
+      ...event, 
+      ...eventOverrides
+    }
+  }
+
+  eventReorder = (event1, event2) => {
+    return moment.utc(event1.date, "MMM D, YYYY").diff(moment.utc(event2.date, "MMM D, YYYY"))
+  }
+  
+
   render() {
     return (
       <div>
@@ -88,20 +127,39 @@ class App extends Component {
               isActive={this.state.showForm}
             />
           </div>
-        </header> 
-        <div className="event-list">
-            {Object.values(this.state.myDates).map((event) => (
-              <EventItem
-                key={event.id}
-                {...event}
-                handleDelete={() => this.removeItem(event)}
-                handleEdit={() => this.handleEdit(event)}
-              />
-            ))}
+        </header>
+        { Object.keys(this.state.myDates).length > 0 ? 
+          <div className="event-list">
+          <ReactCSSTransitionGroup
+          transitionName="cardAnimate"
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={200}>
+          {Object.values(this.state.myDates).map(this.eventFormatter).sort(this.eventReorder).map((event) => (
+            <EventItem
+              key={event.id}
+              {...event}
+              handleDelete={() => this.removeItem(event)}
+              handleEdit={() => this.handleEdit(event)}
+              eventStatus={event.staus}
+            />
+          ))}
+          <AddCard handleClick={this.toggleEditing}
+            isActive={this.state.showForm}
+          />
+          </ReactCSSTransitionGroup>
+          </div>
+          :  
+          <div className="event-list no-events">
+            <span>
+            <h1>Add one ya dummy.</h1>
             <AddCard handleClick={this.toggleEditing}
               isActive={this.state.showForm}
             />
-        </div>
+            </span>
+          </div>
+        }
+        
+        
       </div>
     );
   }

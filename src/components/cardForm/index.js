@@ -118,7 +118,7 @@ export class CardForm extends Component {
             placeholderText={moment().format("MMM D, YYYY")}
             calendarClassName="untilCal"
             dateFormat="MMM D, YYYY"
-            minDate={moment().add(1, 'days')}
+            minDate={moment()}
           />
         <button type="submit" className="btn-submit" disabled={!this.state.value ||this.state.selectedDate === null}>{this.state.id ? 'Save Changes' : 'Add Event'}</button>
       </form>
