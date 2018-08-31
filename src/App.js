@@ -132,7 +132,7 @@ class App extends Component {
           <div className="event-list">
           <ReactCSSTransitionGroup
           transitionName="cardAnimate"
-          transitionEnterTimeout={300}
+          transitionEnterTimeout={350}
           transitionLeaveTimeout={200}>
           {Object.values(this.state.myDates).map(this.eventFormatter).sort(this.eventReorder).map((event) => (
             <EventItem
