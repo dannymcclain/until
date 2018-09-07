@@ -6,19 +6,8 @@ form.add-entry {
   align-items: flex-start;
 }
 
-.add-entry > .emoji-mart-emoji {
-  cursor: pointer;
-  margin-bottom: 20px;
-  padding: 4px;
-  border-radius: 3px;
-}
-
-.add-entry > .emoji-mart-emoji:hover {
-  background: #EBEFF0;
-}
-
-
-.add-entry .input-name, .react-datepicker__input-container input {
+.add-entry .input-name,
+.react-datepicker__input-container input {
   outline: none;
   background: transparent;
   padding: 0;
@@ -30,12 +19,12 @@ form.add-entry {
 
 .react-datepicker__input-container input {
   padding: 12px;
-  background: #F2F4F5;
+  background: #f2f4f5;
   border-radius: 3px;
 }
 
 .react-datepicker__input-container input::placeholder {
-  color: #BABEBF;
+  color: #babebf;
 }
 
 .add-entry .input-name {
@@ -55,7 +44,7 @@ form.add-entry {
 .add-entry .input-name::placeholder {
   font-weight: bold;
   font-size: 28px;
-  color: #C6CACC;
+  color: #c6cacc;
   letter-spacing: -0.4px;
 }
 
@@ -63,7 +52,7 @@ form.add-entry {
   border-color: #0099ff;
 }
 
-.add-entry button.btn-submit{
+.add-entry button.btn-submit {
   font-size: 14px;
   letter-spacing: -0.2px;
   outline: none;
@@ -75,32 +64,35 @@ form.add-entry {
   border: none;
   cursor: pointer;
   transform: scale(1);
-  transition: background 200ms ease, transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: background 200ms ease,
+    transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin: 20px 0 0 0;
 }
 
-.add-entry button.btn-submit:hover{
+.add-entry button.btn-submit:hover {
   transform: scale(1.05);
 }
 
-.add-entry button.btn-submit:disabled:hover{
+.add-entry button.btn-submit:disabled:hover {
   transform: scale(1);
 }
 
-.add-entry button.btn-submit:active{
+.add-entry button.btn-submit:active {
   transform: scale(0.9);
 }
 
-.add-entry button.btn-submit:disabled{
+.add-entry button.btn-submit:disabled {
   cursor: not-allowed;
-  background: #C8CBCC;
+  background: #c8cbcc;
 }
 
 .untilCal {
   border: none;
   border-radius: 5px;
-  box-shadow: 0 8px 20px 0 rgba(0,0,0,0.20);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
 }
 
 .untilCal .react-datepicker__triangle {
@@ -119,7 +111,9 @@ form.add-entry {
   position: relative;
 }
 
-.untilCal .react-datepicker__day--selected, .untilCal .react-datepicker__day--in-selecting-range, .untilCal .react-datepicker__day--in-range {
+.untilCal .react-datepicker__day--selected,
+.untilCal .react-datepicker__day--in-selecting-range,
+.untilCal .react-datepicker__day--in-range {
   border-radius: 5px;
   background-color: #0099ff;
   color: #fff;
@@ -132,5 +126,5 @@ form.add-entry {
 }
 
 .untilCal .react-datepicker__day--keyboard-selected:hover {
-  background-color: #008AE6;
+  background-color: #008ae6;
 }

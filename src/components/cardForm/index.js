@@ -3,14 +3,11 @@ import moment from 'moment';
 import uuid from 'uuid/v1';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
-import 'emoji-mart/css/emoji-mart.css';
-import { Picker, Emoji } from 'emoji-mart';
 import './styles.css';
 
 export class CardForm extends Component {
   state = {
     id: null,
-    emoji: 'wave',
     value: '',
     selectedDate: null,
     showMart: false
@@ -20,110 +17,83 @@ export class CardForm extends Component {
     if (!props.isShowing) {
       return {
         id: null,
-        emoji: 'wave',
         value: '',
         selectedDate: null,
         showMart: false
-      }
+      };
     }
     if (props.currentEvent && props.currentEvent.id !== state.id) {
       return {
         id: props.currentEvent.id,
-        emoji: props.currentEvent.emoji,
         value: props.currentEvent.name,
-        selectedDate: moment(props.currentEvent.date, "MMM D, YYYY")
-      }
+        selectedDate: moment(props.currentEvent.date, 'MMM D, YYYY')
+      };
     }
-    return {}
+    return {};
   }
 
-  toggleMart = () => {
-    this.setState( (currentState) => {
-      return {showMart: !currentState.showMart}
-    });
-  }
+  handleNameChange = event => {
+    this.setState({ value: event.target.value });
+  };
 
-  addEmoji = (emoji) => {
-    this.setState ({
-      emoji: emoji,
-      showMart: false
-    });
-  }
-
-  handleNameChange = (event) => {
-    this.setState({value: event.target.value});
-  }
-
-  handleDateChange = (date) => {
+  handleDateChange = date => {
     this.setState({
       selectedDate: date
     });
-  }
+  };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
-    
+
     const myEvent = {
       id: this.state.id || uuid(),
-      emoji: this.state.emoji,
-      name: this.state.value, 
-      date: this.state.selectedDate.format("MMM D, YYYY"), 
+      name: this.state.value,
+      date: this.state.selectedDate.format('MMM D, YYYY'),
       daysUntil: moment(this.state.selectedDate).fromNow()
-    }
+    };
     this.props.handleSubmit(myEvent);
     this.resetForm();
-  }
+  };
 
   resetForm = () => {
     this.setState({
       id: null,
       value: '',
-      selectedDate: null,
-      showMart: false,
-      emoji: 'wave',
+      selectedDate: null
     });
-  }
+  };
 
   render() {
     return (
       <form className="add-entry" onSubmit={this.handleSubmit}>
-        <Emoji emoji={this.state.emoji} size={32} onClick={this.toggleMart}/>
-        <Picker
-          title=''
-          showPreview={false}
-          style={
-            {
-            position: 'absolute', 
-            top: '85px', 
-            left: '-75px',
-            zIndex: '10',
-            visibility: `${this.state.showMart ? 'visible' : 'hidden'}`,
-            }
-          }
-          color='#0099FF'
-          perLine='7'
-          onSelect={this.addEmoji}
-        />
         <input
-          ref={ (htmlNode) => {this.props.innerRef(htmlNode)} }
+          ref={htmlNode => {
+            this.props.innerRef(htmlNode);
+          }}
           className="input-name"
           type="text"
           value={this.state.value}
           onChange={this.handleNameChange}
           placeholder="Untitled"
-          />
-          <DatePicker
-            selected={this.state.selectedDate}
-            onChange={this.handleDateChange}
-            placeholderText={moment().format("MMM D, YYYY")}
-            calendarClassName="untilCal"
-            dateFormat="MMM D, YYYY"
-            minDate={moment()}
-          />
-        <button type="submit" className="btn-submit" disabled={!this.state.value ||this.state.selectedDate === null}>{this.state.id ? 'Save Changes' : 'Add Event'}</button>
+        />
+        <DatePicker
+          selected={this.state.selectedDate}
+          onChange={this.handleDateChange}
+          placeholderText={moment().format('MMM D, YYYY')}
+          calendarClassName="untilCal"
+          dateFormat="MMM D, YYYY"
+          minDate={moment()}
+        />
+        <button
+          type="submit"
+          className="btn-submit"
+          disabled={!this.state.value || this.state.selectedDate === null}
+        >
+          {this.state.id ? 'Save Changes' : 'Add Event'}
+        </button>
       </form>
-    )
+    );
   }
 }
 
-export default CardForm
+export default CardForm;

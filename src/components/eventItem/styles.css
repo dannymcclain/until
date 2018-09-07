@@ -5,19 +5,15 @@
   justify-content: space-between;
   align-items: flex-start;
   /* min-height: 140px; */
-  background: #FFFFFF;
-  box-shadow: 0 2px 0 0 rgba(0,0,0,0.10);
+  background: #ffffff;
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1);
   padding: 30px;
   border-radius: 9px;
 }
 
-.emoji-mart-emoji {
-  margin-bottom: 5px;
-  flex-grow: 2;
-}
-
 .event-name {
   font-weight: bold;
+  font-size: 23px;
   color: #000000;
   letter-spacing: -0.2px;
   margin: 10px 0;
@@ -26,13 +22,13 @@
 .event-date {
   font-weight: normal;
   font-size: 12px;
-  color: #A1A5A6;
+  color: #a1a5a6;
   letter-spacing: -0.2px;
 }
 
 .days-until {
   font-weight: 600;
-  color: #0099FF;
+  color: #0099ff;
   letter-spacing: -0.2px;
   margin: 0 0 5px 0;
 }
@@ -50,7 +46,7 @@
 }
 
 .edit-button {
-  color: #C6CACC;
+  color: #c6cacc;
   background: transparent;
   outline: none;
   border: none;
