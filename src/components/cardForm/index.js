@@ -9,8 +9,7 @@ export class CardForm extends Component {
   state = {
     id: null,
     value: '',
-    selectedDate: null,
-    showMart: false
+    selectedDate: null
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -18,8 +17,7 @@ export class CardForm extends Component {
       return {
         id: null,
         value: '',
-        selectedDate: null,
-        showMart: false
+        selectedDate: null
       };
     }
     if (props.currentEvent && props.currentEvent.id !== state.id) {
