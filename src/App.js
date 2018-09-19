@@ -121,6 +121,15 @@ class App extends Component {
           />
         </Modal>
 
+        <header>
+          <div className="container">
+            <h1>Until</h1>
+            <ActionButton
+              handleClick={this.toggleEditing}
+              isActive={this.state.showForm}
+            />
+          </div>
+        </header>
         {Object.keys(this.state.myDates).length > 0 ? (
           <div className="event-list">
             <ReactCSSTransitionGroup
