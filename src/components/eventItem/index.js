@@ -11,18 +11,18 @@ const EventItem = ({
   status
 }) => (
   <div className={`event-item ${status}`}>
-    <div>
-      <div className="card-top">
+    <p className="event-name">{name}</p>
+    <div className="card-content">
+      <div class="event-info">
+        <p className="days-until">{daysUntil}</p>
+        <p className="event-date">{date}</p>
+      </div>
+      <div className="card-actions">
         <button className="edit-button" onClick={handleEdit}>
           Edit
         </button>
         <DeleteButton onDelete={handleDelete} />
       </div>
-      <p className="event-name">{name}</p>
-    </div>
-    <div>
-      <p className="days-until">{daysUntil}</p>
-      <p className="event-date">{date}</p>
     </div>
   </div>
 );
