@@ -13,7 +13,7 @@ const EventItem = ({
   <div className={`event-item ${status}`}>
     <p className="event-name">{name}</p>
     <div className="card-content">
-      <div class="event-info">
+      <div className="event-info">
         <p className="days-until">{daysUntil}</p>
         <p className="event-date">{date}</p>
       </div>
