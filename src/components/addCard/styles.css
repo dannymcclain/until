@@ -8,6 +8,7 @@
   color: #4d4d4d;
   font-family: 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono',
     Menlo, Courier, monospace;
+  margin-top: 20px;
 }
 
 .add-card:hover {

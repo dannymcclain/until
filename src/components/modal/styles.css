@@ -5,7 +5,7 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.9);
   z-index: 11;
   pointer-events: none;
   opacity: 0;
@@ -30,7 +30,7 @@
 
 .modal-wrapper {
   background: #ffffff;
-  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #e6e6e6;
   /* padding: 40px; */
   /* border-radius: 9px; */
   position: relative;

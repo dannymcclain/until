@@ -125,11 +125,11 @@ class App extends Component {
               <Emoji symbol="🕑" />
               Until
             </h1>
+            <AddCard
+              handleClick={this.toggleEditing}
+              isActive={this.state.showForm}
+            />
           </header>
-          <AddCard
-            handleClick={this.toggleEditing}
-            isActive={this.state.showForm}
-          />
           {Object.keys(this.state.myDates).length > 0 ? (
             <ul className="event-list">
               {Object.values(this.state.myDates)
