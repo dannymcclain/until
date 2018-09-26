@@ -1,11 +1,16 @@
-form.add-entry {
+.add-entry {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: flex-start;
 }
-
+.add-inputs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 10px 20px;
+}
 .add-entry .input-name,
 .react-datepicker__input-container input {
   outline: none;
@@ -13,8 +18,6 @@ form.add-entry {
   padding: 0;
   border: none;
   border-radius: 0;
-  margin-bottom: 20px;
-  width: 280px;
 }
 
 .react-datepicker__input-container input {
@@ -28,71 +31,74 @@ form.add-entry {
 }
 
 .add-entry .input-name {
-  font-weight: bold;
-  font-size: 28px;
-  color: #000000;
-  letter-spacing: -0.4px;
-}
-
-.react-datepicker__input-container input {
+  font-family: 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono',
+    Menlo, Courier, monospace;
   font-weight: 500;
   font-size: 14px;
   color: #000;
-  letter-spacing: -0.2px;
+}
+
+.react-datepicker__input-container input {
+  font-family: 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono',
+    Menlo, Courier, monospace;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000;
 }
 
 .add-entry .input-name::placeholder {
-  font-weight: bold;
-  font-size: 28px;
-  color: #c6cacc;
-  letter-spacing: -0.4px;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 13px;
+  color: #999999;
+  letter-spacing: 0;
 }
 
 .add-entry input:focus {
   border-color: #0099ff;
 }
 
-.add-entry button.btn-submit {
-  font-size: 14px;
-  letter-spacing: -0.2px;
+.add-entry .form-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.add-entry button {
+  font-family: 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono',
+    Menlo, Courier, monospace;
+  flex: auto;
   outline: none;
-  border-radius: 5px;
-  background: #0099ff;
-  color: #fff;
-  padding: 15px 35px;
-  font-weight: bold;
-  border: none;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  padding: 10px 0;
   cursor: pointer;
-  transform: scale(1);
-  transition: background 200ms ease,
-    transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  margin: 20px 0 0 0;
+}
+.add-entry .btn-cancel {
+  border-right: 0;
+}
+.add-entry .btn-submit {
+  font-weight: 500;
+  color: #000;
 }
 
-.add-entry button.btn-submit:hover {
-  transform: scale(1.05);
-}
-
-.add-entry button.btn-submit:disabled:hover {
-  transform: scale(1);
-}
-
-.add-entry button.btn-submit:active {
-  transform: scale(0.9);
-}
-
-.add-entry button.btn-submit:disabled {
+.btn-cancel:disabled,
+.btn-submit:disabled {
   cursor: not-allowed;
-  background: #c8cbcc;
+  color: #999;
 }
 
 .untilCal {
   border: none;
-  border-radius: 5px;
-  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
+  border-radius: 0;
+  box-shadow: 0;
+  border: 1px solid #e6e6e6;
+  font-family: 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono',
+    Menlo, Courier, monospace;
 }
 
 .untilCal .react-datepicker__triangle {
@@ -103,10 +109,10 @@ form.add-entry {
 
 .untilCal .react-datepicker__header {
   text-align: center;
-  background-color: #f0f0f0;
+  background-color: #fff;
   border-bottom: none;
-  border-top-left-radius: 0.3rem;
-  border-top-right-radius: 0.3rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   padding-top: 8px;
   position: relative;
 }
@@ -114,17 +120,17 @@ form.add-entry {
 .untilCal .react-datepicker__day--selected,
 .untilCal .react-datepicker__day--in-selecting-range,
 .untilCal .react-datepicker__day--in-range {
-  border-radius: 5px;
-  background-color: #0099ff;
+  border-radius: 0;
+  background-color: #333;
   color: #fff;
 }
 
 .untilCal .react-datepicker__day--keyboard-selected {
-  border-radius: 0.3rem;
-  background-color: #0099ff;
+  border-radius: 0;
+  background-color: #333;
   color: #fff;
 }
 
 .untilCal .react-datepicker__day--keyboard-selected:hover {
-  background-color: #008ae6;
+  /* background-color: #008ae6; */
 }

@@ -31,15 +31,15 @@
 .modal-wrapper {
   background: #ffffff;
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
-  padding: 40px;
-  border-radius: 9px;
+  /* padding: 40px; */
+  /* border-radius: 9px; */
   position: relative;
 }
 
 .modal-close {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: -30px;
+  right: -30px;
   outline: none;
   border: none;
   color: #a1a5a6;

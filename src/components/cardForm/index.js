@@ -63,32 +63,44 @@ export class CardForm extends Component {
 
   render() {
     return (
-      <form className="add-entry" onSubmit={this.handleSubmit}>
-        <input
-          ref={htmlNode => {
-            this.props.innerRef(htmlNode);
-          }}
-          className="input-name"
-          type="text"
-          value={this.state.value}
-          onChange={this.handleNameChange}
-          placeholder="Untitled"
-        />
-        <DatePicker
-          selected={this.state.selectedDate}
-          onChange={this.handleDateChange}
-          placeholderText={moment().format('MMM D, YYYY')}
-          calendarClassName="untilCal"
-          dateFormat="MMM D, YYYY"
-          minDate={moment()}
-        />
-        <button
-          type="submit"
-          className="btn-submit"
-          disabled={!this.state.value || this.state.selectedDate === null}
-        >
-          {this.state.id ? 'Save Changes' : 'Add Event'}
-        </button>
+      <form className="add-entry">
+        <div className="add-inputs">
+          <input
+            ref={htmlNode => {
+              this.props.innerRef(htmlNode);
+            }}
+            className="input-name"
+            type="text"
+            value={this.state.value}
+            onChange={this.handleNameChange}
+            placeholder="Untitled event"
+          />
+          <DatePicker
+            selected={this.state.selectedDate}
+            onChange={this.handleDateChange}
+            placeholderText={moment().format('MMM D, YYYY')}
+            calendarClassName="untilCal"
+            dateFormat="MMM D, YYYY"
+            minDate={moment()}
+          />
+        </div>
+        <div className="form-actions">
+          <button
+            onClick={this.resetForm}
+            className="btn-cancel"
+            disabled={!this.state.value || this.state.selectedDate === null}
+          >
+            Cancel
+          </button>
+          <button
+            onClick={this.handleSubmit}
+            type="submit"
+            className="btn-submit"
+            disabled={!this.state.value || this.state.selectedDate === null}
+          >
+            Save
+          </button>
+        </div>
       </form>
     );
   }
