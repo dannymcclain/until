@@ -126,6 +126,10 @@ class App extends Component {
               Until
             </h1>
           </header>
+          <AddCard
+            handleClick={this.toggleEditing}
+            isActive={this.state.showForm}
+          />
           {Object.keys(this.state.myDates).length > 0 ? (
             <ul className="event-list">
               {Object.values(this.state.myDates)
@@ -140,10 +144,6 @@ class App extends Component {
                     eventStatus={event.staus}
                   />
                 ))}
-              <AddCard
-                handleClick={this.toggleEditing}
-                isActive={this.state.showForm}
-              />
             </ul>
           ) : (
             <div className="event-list no-events">
