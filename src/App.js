@@ -110,7 +110,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <Modal isShowing={this.state.showForm} handleClose={this.toggleEditing}>
           <CardForm
             innerRef={this.bindInnerRef}
@@ -119,43 +119,44 @@ class App extends Component {
             currentEvent={this.state.currentEvent}
           />
         </Modal>
-
-        <header>
-          <h1>
-            <Emoji symbol="🕑" />
-            Until
-          </h1>
-        </header>
-        {Object.keys(this.state.myDates).length > 0 ? (
-          <ul className="event-list">
-            {Object.values(this.state.myDates)
-              .map(this.eventFormatter)
-              .sort(this.eventReorder)
-              .map(event => (
-                <EventItem
-                  key={event.id}
-                  {...event}
-                  handleDelete={() => this.removeItem(event)}
-                  handleEdit={() => this.handleEdit(event)}
-                  eventStatus={event.staus}
-                />
-              ))}
-            <AddCard
-              handleClick={this.toggleEditing}
-              isActive={this.state.showForm}
-            />
-          </ul>
-        ) : (
-          <div className="event-list no-events">
-            <span>
-              <h1>Add one ya dummy.</h1>
+        <div className="container">
+          <header>
+            <h1>
+              <Emoji symbol="🕑" />
+              Until
+            </h1>
+          </header>
+          {Object.keys(this.state.myDates).length > 0 ? (
+            <ul className="event-list">
+              {Object.values(this.state.myDates)
+                .map(this.eventFormatter)
+                .sort(this.eventReorder)
+                .map(event => (
+                  <EventItem
+                    key={event.id}
+                    {...event}
+                    handleDelete={() => this.removeItem(event)}
+                    handleEdit={() => this.handleEdit(event)}
+                    eventStatus={event.staus}
+                  />
+                ))}
               <AddCard
                 handleClick={this.toggleEditing}
                 isActive={this.state.showForm}
               />
-            </span>
-          </div>
-        )}
+            </ul>
+          ) : (
+            <div className="event-list no-events">
+              <span>
+                <h1>Add one ya dummy.</h1>
+                <AddCard
+                  handleClick={this.toggleEditing}
+                  isActive={this.state.showForm}
+                />
+              </span>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
