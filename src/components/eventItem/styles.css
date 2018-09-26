@@ -56,3 +56,8 @@ p {
   color: #ffffff;
   background: #333333;
 }
+
+.present .card-content,
+.present .card-footer {
+  border-color: #e6e6e6;
+}
