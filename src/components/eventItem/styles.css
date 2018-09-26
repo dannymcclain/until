@@ -1,71 +1,52 @@
+p {
+  margin: 0;
+  padding: 0;
+}
 .event-item {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: flex-start;
   background: #ffffff;
-  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  border-radius: 9px;
-}
-
-.event-name {
-  font-weight: bold;
-  font-size: 23px;
-  color: #000000;
-  letter-spacing: -0.2px;
-}
-
-.event-date {
-  font-weight: normal;
-  font-size: 12px;
-  color: #a1a5a6;
-  letter-spacing: -0.2px;
-}
-
-.days-until {
-  font-weight: 700;
-  font-size: 15px;
-  color: #0099ff;
-  letter-spacing: -0.2px;
-  margin: 0 0 8px 0;
-}
-
-.event-item div {
+  margin-bottom: 30px;
   width: 100%;
-}
-
-.card-actions {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.edit-button {
-  background: transparent;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  margin-right: 10px;
-
-  font-weight: normal;
-  font-size: 12px;
-  color: #a1a5a6;
-  letter-spacing: -0.2px;
-}
-
-.edit-button:hover {
-  color: #0099ff;
+  max-width: 320px;
+  box-sizing: border-box;
 }
 
 .card-content {
+  box-sizing: border-box;
+  border: 1px solid #e6e6e6;
+  padding: 14px 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: flex-end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event-name {
+  flex: 1;
+  font-weight: 500;
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+.days-until {
+  font-weight: 400;
+  font-size: 11px;
+  color: #000000;
+  padding: 8px 10px;
+  background: #f5f5f5;
+  margin-right: 4px;
+}
+
+.card-footer {
+  box-sizing: border-box;
+  border: 1px solid #e6e6e6;
+  margin-top: -1px;
+  padding: 10px;
+}
+
+.event-date {
+  font-weight: 400;
+  font-style: italic;
+  font-size: 11px;
+  color: #999999;
 }

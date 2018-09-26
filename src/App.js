@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import ActionButton from './components/actionButton';
 import AddCard from './components/addCard';
 import EventItem from './components/eventItem';
 import CardForm from './components/cardForm';
+import Emoji from './components/Emoji';
 import Modal from './components/modal';
 import './App.css';
 
@@ -111,7 +110,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Modal isShowing={this.state.showForm} handleClose={this.toggleEditing}>
           <CardForm
             innerRef={this.bindInnerRef}
@@ -122,38 +121,29 @@ class App extends Component {
         </Modal>
 
         <header>
-          <div className="container">
-            <h1>Until</h1>
-            <ActionButton
-              handleClick={this.toggleEditing}
-              isActive={this.state.showForm}
-            />
-          </div>
+          <h1>
+            <Emoji symbol="🕑" />
+            Until
+          </h1>
         </header>
         {Object.keys(this.state.myDates).length > 0 ? (
           <div className="event-list">
-            <ReactCSSTransitionGroup
-              transitionName="cardAnimate"
-              transitionEnterTimeout={350}
-              transitionLeaveTimeout={200}
-            >
-              {Object.values(this.state.myDates)
-                .map(this.eventFormatter)
-                .sort(this.eventReorder)
-                .map(event => (
-                  <EventItem
-                    key={event.id}
-                    {...event}
-                    handleDelete={() => this.removeItem(event)}
-                    handleEdit={() => this.handleEdit(event)}
-                    eventStatus={event.staus}
-                  />
-                ))}
-              <AddCard
-                handleClick={this.toggleEditing}
-                isActive={this.state.showForm}
-              />
-            </ReactCSSTransitionGroup>
+            {Object.values(this.state.myDates)
+              .map(this.eventFormatter)
+              .sort(this.eventReorder)
+              .map(event => (
+                <EventItem
+                  key={event.id}
+                  {...event}
+                  handleDelete={() => this.removeItem(event)}
+                  handleEdit={() => this.handleEdit(event)}
+                  eventStatus={event.staus}
+                />
+              ))}
+            <AddCard
+              handleClick={this.toggleEditing}
+              isActive={this.state.showForm}
+            />
           </div>
         ) : (
           <div className="event-list no-events">

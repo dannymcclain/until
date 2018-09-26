@@ -12,84 +12,35 @@ svg {
 body {
   margin: 0;
   padding: 0;
-  font-size: 14px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
-  background-image: linear-gradient(90deg, #18c9ff 0%, #0083e0 100%);
-  background-position: cover;
-  height: 100vh;
+  font-size: 13px;
+  font-family: 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono',
+    Menlo, Courier, monospace;
+  background: #fff;
+  color: #000;
 }
 
 header {
-  background: rgba(0, 30, 51, 0.15);
-  z-index: 10;
-  position: relative;
-  padding: 24px 0;
+  margin: 40px 0;
 }
 
 h1 {
-  font-weight: 700;
+  font-weight: 500;
   margin: 0;
-  font-size: 18px;
-  color: #fff;
-  letter-spacing: -0.2px;
-  text-align: left;
+  font-size: 15px;
+  text-align: center;
+}
+
+h1 .emoji {
+  font-size: 13px;
 }
 
 .container {
-  width: 100%;
-  max-width: 900px;
+  width: 90%;
+  max-width: 320px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.add-button {
-  outline: none;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  height: 28px;
-  width: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.add-button .plus-icon {
-  transform: rotate(0) translateY(-1px);
-  transform-origin: center center;
-}
-
-.add-button .plus-icon .stick {
-  display: block;
-  height: 2px;
-  width: 16px;
-  background: #fff;
-  border-radius: 1px;
-}
-
-.add-button .stick:first-child {
-  transform: rotate(90deg) translateX(2px);
-  transform-origin: center center;
-}
-
-@media (max-width: 480px) {
-  .event-list {
-    grid-gap: 10px;
-    padding: 0 10px 0;
-  }
 }
 
 .event-list > span {
-  max-width: 900px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  grid-auto-rows: minmax(140px, 1fr);
-  grid-gap: 30px;
   padding: 0 30px 0;
   margin-top: 40px;
 }

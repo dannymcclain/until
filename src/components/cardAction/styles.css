@@ -1,0 +1,16 @@
+.card-action {
+  font-family: 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono',
+    Menlo, Courier, monospace;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 11px;
+  color: #999999;
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.card-action:hover {
+  color: #000;
+}

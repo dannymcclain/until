@@ -1,5 +1,5 @@
 import React from 'react';
-import DeleteButton from './../deleteButton';
+import CardAction from './../cardAction';
 import './styles.css';
 
 const EventItem = ({
@@ -11,18 +11,16 @@ const EventItem = ({
   status
 }) => (
   <div className={`event-item ${status}`}>
-    <p className="event-name">{name}</p>
     <div className="card-content">
-      <div className="event-info">
-        <p className="days-until">{daysUntil}</p>
-        <p className="event-date">{date}</p>
-      </div>
-      <div className="card-actions">
-        <button className="edit-button" onClick={handleEdit}>
-          Edit
-        </button>
-        <DeleteButton onDelete={handleDelete} />
-      </div>
+      <p className="event-name">{name}</p>
+      <p className="days-until">{daysUntil}</p>
+    </div>
+
+    <div className="card-footer">
+      <p className="event-date">
+        {date} / <CardAction action={handleEdit} text="Edit" /> /{' '}
+        <CardAction action={handleDelete} text="Remove" />
+      </p>
     </div>
   </div>
 );
