@@ -10,7 +10,7 @@ const EventItem = ({
   handleEdit,
   status
 }) => (
-  <div className={`event-item ${status}`}>
+  <li className={`event-item ${status}`}>
     <div className="card-content">
       <p className="event-name">{name}</p>
       <p className="days-until">{daysUntil}</p>
@@ -22,7 +22,7 @@ const EventItem = ({
         <CardAction action={handleDelete} text="Remove" />
       </p>
     </div>
-  </div>
+  </li>
 );
 
 export default EventItem;

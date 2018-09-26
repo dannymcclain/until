@@ -127,7 +127,7 @@ class App extends Component {
           </h1>
         </header>
         {Object.keys(this.state.myDates).length > 0 ? (
-          <div className="event-list">
+          <ul className="event-list">
             {Object.values(this.state.myDates)
               .map(this.eventFormatter)
               .sort(this.eventReorder)
@@ -144,7 +144,7 @@ class App extends Component {
               handleClick={this.toggleEditing}
               isActive={this.state.showForm}
             />
-          </div>
+          </ul>
         ) : (
           <div className="event-list no-events">
             <span>

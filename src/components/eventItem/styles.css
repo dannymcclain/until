@@ -50,3 +50,9 @@ p {
   font-size: 11px;
   color: #999999;
 }
+
+.present .days-until {
+  font-weight: 500;
+  color: #ffffff;
+  background: #333333;
+}
