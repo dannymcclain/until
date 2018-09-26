@@ -1,12 +1,18 @@
 import React from 'react';
+
+const styles = {
+  display: 'inline-block'
+};
+
 const Emoji = ({ label, symbol }) => (
-  <span
+  <figure
     className="emoji"
     role="img"
     aria-label={label ? label : ''}
     aria-hidden={label ? 'false' : 'true'}
+    style={styles}
   >
     {symbol}
-  </span>
+  </figure>
 );
 export default Emoji;
