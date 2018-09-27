@@ -85,11 +85,7 @@ export class CardForm extends Component {
           />
         </div>
         <div className="form-actions">
-          <button
-            onClick={this.resetForm}
-            className="btn-cancel"
-            disabled={!this.state.value || this.state.selectedDate === null}
-          >
+          <button onClick={console.log('hit cancel')} className="btn-cancel">
             Cancel
           </button>
           <button
