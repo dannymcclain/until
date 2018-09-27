@@ -85,9 +85,6 @@ export class CardForm extends Component {
           />
         </div>
         <div className="form-actions">
-          <button onClick={console.log('hit cancel')} className="btn-cancel">
-            Cancel
-          </button>
           <button
             onClick={this.handleSubmit}
             type="submit"
