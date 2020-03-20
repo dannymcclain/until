@@ -25,7 +25,10 @@
 </style>
 
 <main>
-  <h1>Hello!</h1>
+  <h1>
+    <Emoji symbol="🕙" />
+    Until
+  </h1>
   <p>
     Checking to see if this
     <Emoji label="paint brush" symbol="🖌" />
@@ -33,6 +36,6 @@
   </p>
   <p>
     What about this one?
-    <Emoji label="" symbol="🍎" />
+    <Emoji symbol="🍎" />
   </p>
 </main>
