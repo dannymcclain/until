@@ -38,6 +38,4 @@
     works or not.
   </p>
   <Event />
-
-  <Event />
 </main>
