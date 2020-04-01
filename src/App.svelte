@@ -1,5 +1,8 @@
 <script>
   import Emoji from "./Components/Emoji.svelte";
+  import Header from "./Components/Header.svelte";
+  import About from "./Components/About.svelte";
+  import Event from "./Components/Event.svelte";
 </script>
 
 <style>
@@ -34,8 +37,7 @@
     <Emoji label="paint brush" symbol="🖌" />
     works or not.
   </p>
-  <p>
-    What about this one?
-    <Emoji symbol="🍎" />
-  </p>
+  <Event />
+
+  <Event />
 </main>
