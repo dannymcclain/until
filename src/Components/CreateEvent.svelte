@@ -3,7 +3,18 @@
   import relativeTime from "dayjs/plugin/relativeTime";
   dayjs.extend(relativeTime);
   import DatePicker from "./Datepicker/DatePicker.svelte";
+  import { createEventDispatcher } from "svelte";
 
+  const dispatch = createEventDispatcher();
+
+  function newEvent() {
+    dispatch("newEvent", {
+      symbol: symbol,
+      title: title,
+      date: selectedDate
+    });
+  }
+  let symbol = "✌️";
   let title = "The Event";
   let tomorrow = dayjs()
     .add(1, "d")
@@ -14,14 +25,13 @@
   const onDateChange = d => {
     selectedDate = d.detail;
   };
-
-  $: fromNow = dayjs(selectedDate).fromNow();
 </script>
 
 <style>
 
 </style>
 
+<input type="text" bind:value={symbol} />
 <input type="text" bind:value={title} />
 
 <DatePicker
@@ -31,5 +41,4 @@
     if (dayjs(date).isAfter(dayjs())) return true;
     return false;
   }} />
-
-<p>{title} is {fromNow}</p>
+<button on:click={newEvent}>Add event</button>
