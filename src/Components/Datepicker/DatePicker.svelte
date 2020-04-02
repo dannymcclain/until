@@ -2,6 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import Calender from "./Calender.svelte";
   import { getMonthName } from "./date-time.js";
+  import dayjs from "dayjs";
 
   const dispatch = createEventDispatcher();
 
@@ -99,7 +100,10 @@
 </style>
 
 <div class="relative">
-  <input type="text" on:focus={onFocus} value={selected.toDateString()} />
+  <input
+    type="text"
+    on:focus={onFocus}
+    value={dayjs(selected).format('MMM D, YYYY')} />
   {#if showDatePicker}
     <div class="box">
       <div class="close">
