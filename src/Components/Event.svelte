@@ -20,11 +20,14 @@
   section {
     background: #272729;
     border-radius: 4px;
-    padding: 40px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     place-items: center;
   }
+  /* .content {
+
+  } */
   h4 {
     font-weight: 800;
     font-size: 40px;
@@ -57,12 +60,26 @@
     line-height: 1;
     color: #ffffff;
   }
+  button {
+    padding: 6px 8px;
+    background: #272729;
+    border: 1px solid #4e4e52;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1;
+    color: #7e7e85;
+    align-self: flex-end;
+    cursor: pointer;
+  }
 </style>
 
 <section>
   <button on:click={deleteEvent}>Delete</button>
-  <h4>{symbol}</h4>
-  <h2>{title}</h2>
-  <p>{dayjs(date).format('MMM D, YYYY')}</p>
-  <h3>{timeFromNow}</h3>
+  <div class="content">
+    <h4>{symbol}</h4>
+    <h2>{title}</h2>
+    <p>{dayjs(date).format('MMM D, YYYY')}</p>
+    <h3>{timeFromNow}</h3>
+  </div>
 </section>
