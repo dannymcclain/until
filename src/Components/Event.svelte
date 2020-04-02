@@ -1,33 +1,18 @@
 <script>
   import moment from "moment";
-  // import Datepicker from "svelte-calendar";
-  import DatePicker from "./Datepicker/DatePicker.svelte";
 
-  let title = "Tomorrow";
-  let tomorrow = moment()
-    .add(1, "d")
-    .toDate();
-  let selectedDate = tomorrow;
+  export let symbol, title, date;
 
-  const onDateChange = d => {
-    selectedDate = d.detail;
-  };
-
-  $: fromNow = moment(selectedDate).fromNow();
+  let timeFromNow = moment(date).fromNow();
 </script>
 
 <style>
 
 </style>
 
-<input type="text" bind:value={title} />
-
-<DatePicker
-  on:datechange={onDateChange}
-  selected={selectedDate}
-  isAllowed={date => {
-    if (moment(date).isAfter(moment())) return true;
-    return false;
-  }} />
-
-<p>{title} is {fromNow}</p>
+<section>
+  <h4>{symbol}</h4>
+  <h2>{title}</h2>
+  <p>{moment(date).format('MMM D, YYYY')}</p>
+  <h3>{timeFromNow}</h3>
+</section>

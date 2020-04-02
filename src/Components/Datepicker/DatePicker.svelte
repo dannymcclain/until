@@ -90,12 +90,21 @@
   button:hover {
     background: #ddd;
   }
+  .close {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
 </style>
 
 <div class="relative">
   <input type="text" on:focus={onFocus} value={selected.toDateString()} />
   {#if showDatePicker}
     <div class="box">
+      <div class="close">
+        <button on:click={() => (showDatePicker = false)}>×</button>
+      </div>
       <div class="header">
         <button on:click={prev}>←</button>
         <div>{getMonthName(month)} {year}</div>

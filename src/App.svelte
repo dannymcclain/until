@@ -1,7 +1,13 @@
 <script>
   import Header from "./Components/Header.svelte";
   import About from "./Components/About.svelte";
+  import CreateEvent from "./Components/CreateEvent.svelte";
   import Event from "./Components/Event.svelte";
+  import moment from "moment";
+
+  let date = moment()
+    .add(45, "d")
+    .toDate();
 </script>
 
 <style>
@@ -20,6 +26,6 @@
 
 <main>
   <h1>Until</h1>
-  <Event />
-  <Event />
+  <CreateEvent />
+  <Event symbol="👽" title="Alien Invasion" {date} />
 </main>
