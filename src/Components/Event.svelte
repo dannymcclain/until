@@ -2,8 +2,16 @@
   import dayjs from "dayjs";
   import relativeTime from "dayjs/plugin/relativeTime";
   dayjs.extend(relativeTime);
+  import { createEventDispatcher } from "svelte";
 
-  export let symbol, title, date;
+  const dispatch = createEventDispatcher();
+
+  export let symbol, title, date, id;
+  function deleteEvent() {
+    dispatch("delete", {
+      id: id
+    });
+  }
 
   $: timeFromNow = dayjs(date).fromNow();
 </script>
@@ -52,6 +60,7 @@
 </style>
 
 <section>
+  <button on:click={deleteEvent}>Delete</button>
   <h4>{symbol}</h4>
   <h2>{title}</h2>
   <p>{dayjs(date).format('MMM D, YYYY')}</p>

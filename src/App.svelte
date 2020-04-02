@@ -28,6 +28,21 @@
     events.update(current => updatedEvents);
     localStorage.setItem("events", JSON.stringify($events));
   }
+
+  function deleteEvent(event) {
+    let updatedEvents = Array.from($events);
+    let eventId;
+    updatedEvents.forEach(function(entry) {
+      if (entry.id === event.detail.id) {
+        eventId = entry.id;
+      }
+    });
+    let updatedEventList = updatedEvents.filter(entry => {
+      return entry.id != eventId;
+    });
+    events.update(current => updatedEventList);
+    localStorage.setItem("events", JSON.stringify($events));
+  }
 </script>
 
 <style>
@@ -63,8 +78,8 @@
     {#if $events.length === 0}
       <h2>Create an event to get started</h2>
     {:else}
-      {#each $events as { symbol, title, date }, id}
-        <Event {symbol} {title} {date} />
+      {#each $events as { symbol, title, date, id } (id)}
+        <Event {symbol} {title} {date} {id} on:delete={deleteEvent} />
       {/each}
     {/if}
   </section>
