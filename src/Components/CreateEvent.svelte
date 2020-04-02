@@ -1,11 +1,13 @@
 <script>
-  import moment from "moment";
-  // import Datepicker from "svelte-calendar";
+  import dayjs from "dayjs";
+  import relativeTime from "dayjs/plugin/relativeTime";
+  dayjs.extend(relativeTime);
   import DatePicker from "./Datepicker/DatePicker.svelte";
 
-  let title = "Tomorrow";
-  let tomorrow = moment()
+  let title = "The Event";
+  let tomorrow = dayjs()
     .add(1, "d")
+    .startOf("d")
     .toDate();
   let selectedDate = tomorrow;
 
@@ -13,7 +15,7 @@
     selectedDate = d.detail;
   };
 
-  $: fromNow = moment(selectedDate).fromNow();
+  $: fromNow = dayjs(selectedDate).fromNow();
 </script>
 
 <style>
@@ -26,7 +28,7 @@
   on:datechange={onDateChange}
   selected={selectedDate}
   isAllowed={date => {
-    if (moment(date).isAfter(moment())) return true;
+    if (dayjs(date).isAfter(dayjs())) return true;
     return false;
   }} />
 

@@ -3,10 +3,10 @@
   import About from "./Components/About.svelte";
   import CreateEvent from "./Components/CreateEvent.svelte";
   import Event from "./Components/Event.svelte";
-  import moment from "moment";
+  import dayjs from "dayjs";
 
-  let date = moment()
-    .add(45, "d")
+  let date = dayjs()
+    .add(3, "M")
     .toDate();
 </script>
 
