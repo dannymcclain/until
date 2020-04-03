@@ -28,17 +28,21 @@
 </script>
 
 <style>
-
+  section {
+    padding: 80px;
+  }
 </style>
 
-<input type="text" bind:value={symbol} />
-<input type="text" bind:value={title} />
+<section>
+  <input type="text" bind:value={symbol} />
+  <input type="text" bind:value={title} />
 
-<DatePicker
-  on:datechange={onDateChange}
-  selected={selectedDate}
-  isAllowed={date => {
-    if (dayjs(date).isAfter(dayjs())) return true;
-    return false;
-  }} />
-<button on:click={newEvent}>Add event</button>
+  <DatePicker
+    on:datechange={onDateChange}
+    selected={selectedDate}
+    isAllowed={date => {
+      if (dayjs(date).isAfter(dayjs())) return true;
+      return false;
+    }} />
+  <button on:click={newEvent}>Add event</button>
+</section>
