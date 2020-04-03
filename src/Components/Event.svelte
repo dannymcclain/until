@@ -31,17 +31,27 @@
     display: flex;
     flex-direction: column;
     place-items: center;
+    /* Fun but dumb 
+    transform: scale(1); 
+    transition: transform 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55); */
   }
+  /* section:hover {
+    transform: scale(1.1);
+  } */
   .content {
     display: flex;
     flex-direction: column;
     place-items: center;
+    padding: 0 0 20px 0;
   }
   h4 {
-    font-weight: 800;
+    font-weight: 900;
     font-size: 40px;
-    line-height: 1;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
     margin-bottom: 16px;
+    color: #18181a;
+    text-align: center;
   }
   h2 {
     font-weight: 800;

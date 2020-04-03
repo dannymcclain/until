@@ -37,12 +37,24 @@
   section {
     padding: 80px;
   }
+  label {
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+    align-items: flex-start;
+  }
 </style>
 
 <section>
-  <input type="text" bind:value={symbol} />
-  <input type="text" bind:value={title} />
-
+  <label>
+    🙂
+    <input type="text" bind:value={symbol} maxlength="12" />
+  </label>
+  <label>
+    Title
+    <input type="text" bind:value={title} maxlength="36" />
+  </label>
+  <p>Event Date</p>
   <DatePicker
     on:datechange={onDateChange}
     selected={selectedDate}
