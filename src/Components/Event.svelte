@@ -3,7 +3,7 @@
   import relativeTime from "dayjs/plugin/relativeTime";
   dayjs.extend(relativeTime);
   import { createEventDispatcher } from "svelte";
-  import { scale, slide } from "svelte/transition";
+  import { scale } from "svelte/transition";
   import { backInOut } from "svelte/easing";
   import { events } from "../stores.js";
 

@@ -15,11 +15,13 @@
       events.update(entry => data);
     }
   });
+  let createShowing = false;
 </script>
 
 <style>
   :global(body) {
     background: #0c0c0d;
+    position: relative;
   }
   main {
     padding: 1em;
@@ -42,10 +44,12 @@
   }
 </style>
 
+{#if createShowing}
+  <CreateEvent on:closeCreate={() => (createShowing = false)} />
+{/if}
 <main>
   <h1>Until</h1>
-  <CreateEvent />
-
+  <button on:click={() => (createShowing = true)}>Create Event</button>
   <section class="event-grid">
     {#if $events.length === 0}
       <h2>Create an event to get started</h2>
