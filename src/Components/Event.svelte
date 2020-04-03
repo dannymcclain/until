@@ -3,6 +3,8 @@
   import relativeTime from "dayjs/plugin/relativeTime";
   dayjs.extend(relativeTime);
   import { createEventDispatcher } from "svelte";
+  import { scale } from "svelte/transition";
+  import { backInOut, quintOut } from "svelte/easing";
 
   const dispatch = createEventDispatcher();
 
@@ -25,9 +27,11 @@
     flex-direction: column;
     place-items: center;
   }
-  /* .content {
-
-  } */
+  .content {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+  }
   h4 {
     font-weight: 800;
     font-size: 40px;
@@ -71,10 +75,15 @@
     color: #7e7e85;
     align-self: flex-end;
     cursor: pointer;
+    transition: border-color 150ms linear, color 150ms linear;
+  }
+  button:hover {
+    border-color: #74747a;
+    color: #a5a5ad;
   }
 </style>
 
-<section>
+<section transition:scale={{ duration: 500, easing: backInOut }}>
   <button on:click={deleteEvent}>Delete</button>
   <div class="content">
     <h4>{symbol}</h4>

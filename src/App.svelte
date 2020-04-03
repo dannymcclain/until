@@ -7,6 +7,8 @@
   import Event from "./Components/Event.svelte";
   import { events } from "./stores.js";
   import { onMount } from "svelte";
+  import { flip } from "svelte/animate";
+  import { backInOut, backOut, cubicInOut } from "svelte/easing";
 
   onMount(() => {
     const data = JSON.parse(localStorage.getItem("events"));
@@ -79,7 +81,9 @@
       <h2>Create an event to get started</h2>
     {:else}
       {#each $events as { symbol, title, date, id } (id)}
-        <Event {symbol} {title} {date} {id} on:delete={deleteEvent} />
+        <div animate:flip={{ delay: 100, duration: 400, easing: cubicInOut }}>
+          <Event {symbol} {title} {date} {id} on:delete={deleteEvent} />
+        </div>
       {/each}
     {/if}
   </section>
