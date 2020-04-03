@@ -3,8 +3,8 @@
   import relativeTime from "dayjs/plugin/relativeTime";
   dayjs.extend(relativeTime);
   import { createEventDispatcher } from "svelte";
-  import { scale } from "svelte/transition";
-  import { backInOut, quintOut } from "svelte/easing";
+  import { scale, slide } from "svelte/transition";
+  import { backInOut } from "svelte/easing";
 
   const dispatch = createEventDispatcher();
 
@@ -83,7 +83,7 @@
   }
 </style>
 
-<section transition:scale={{ duration: 500, easing: backInOut }}>
+<section transition:scale={{ duration: 600, easing: backInOut }}>
   <button on:click={deleteEvent}>Delete</button>
   <div class="content">
     <h4>{symbol}</h4>
