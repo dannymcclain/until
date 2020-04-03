@@ -1,6 +1,5 @@
 <script>
   import dayjs from "dayjs";
-  import { uuid } from "uuidv4";
   import Header from "./Components/Header.svelte";
   import About from "./Components/About.svelte";
   import CreateEvent from "./Components/CreateEvent.svelte";
@@ -16,20 +15,6 @@
       events.update(entry => data);
     }
   });
-
-  function addEvent(event) {
-    let newEvent = {
-      symbol: event.detail.symbol,
-      title: event.detail.title,
-      date: event.detail.date,
-      id: uuid()
-    };
-    let updatedEvents = Array.from($events);
-    updatedEvents.unshift(newEvent);
-    updatedEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
-    events.update(current => updatedEvents);
-    localStorage.setItem("events", JSON.stringify($events));
-  }
 </script>
 
 <style>
@@ -59,7 +44,7 @@
 
 <main>
   <h1>Until</h1>
-  <CreateEvent on:newEvent={addEvent} />
+  <CreateEvent />
 
   <section class="event-grid">
     {#if $events.length === 0}

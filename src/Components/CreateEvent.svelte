@@ -1,19 +1,11 @@
 <script>
+  import { uuid } from "uuidv4";
   import dayjs from "dayjs";
   import relativeTime from "dayjs/plugin/relativeTime";
   dayjs.extend(relativeTime);
   import DatePicker from "./Datepicker/DatePicker.svelte";
-  import { createEventDispatcher } from "svelte";
+  import { events } from "../stores.js";
 
-  const dispatch = createEventDispatcher();
-
-  function newEvent() {
-    dispatch("newEvent", {
-      symbol: symbol,
-      title: title,
-      date: selectedDate
-    });
-  }
   let symbol = "✌️";
   let title = "The Event";
   let tomorrow = dayjs()
@@ -25,6 +17,20 @@
   const onDateChange = d => {
     selectedDate = d.detail;
   };
+
+  function addEvent() {
+    let newEvent = {
+      symbol: symbol,
+      title: title,
+      date: selectedDate,
+      id: uuid()
+    };
+    let updatedEvents = Array.from($events);
+    updatedEvents.unshift(newEvent);
+    updatedEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+    events.update(current => updatedEvents);
+    localStorage.setItem("events", JSON.stringify($events));
+  }
 </script>
 
 <style>
@@ -44,5 +50,5 @@
       if (dayjs(date).isAfter(dayjs())) return true;
       return false;
     }} />
-  <button on:click={newEvent}>Add event</button>
+  <button on:click={addEvent}>Add event</button>
 </section>
