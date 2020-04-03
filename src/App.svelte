@@ -30,21 +30,6 @@
     events.update(current => updatedEvents);
     localStorage.setItem("events", JSON.stringify($events));
   }
-
-  function deleteEvent(event) {
-    let updatedEvents = Array.from($events);
-    let eventId;
-    updatedEvents.forEach(function(entry) {
-      if (entry.id === event.detail.id) {
-        eventId = entry.id;
-      }
-    });
-    let updatedEventList = updatedEvents.filter(entry => {
-      return entry.id != eventId;
-    });
-    events.update(current => updatedEventList);
-    localStorage.setItem("events", JSON.stringify($events));
-  }
 </script>
 
 <style>
@@ -82,7 +67,7 @@
     {:else}
       {#each $events as { symbol, title, date, id } (id)}
         <div animate:flip={{ delay: 200, duration: 400, easing: quintInOut }}>
-          <Event {symbol} {title} {date} {id} on:delete={deleteEvent} />
+          <Event {symbol} {title} {date} {id} />
         </div>
       {/each}
     {/if}

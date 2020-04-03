@@ -5,17 +5,22 @@
   import { createEventDispatcher } from "svelte";
   import { scale, slide } from "svelte/transition";
   import { backInOut } from "svelte/easing";
+  import { events } from "../stores.js";
 
   const dispatch = createEventDispatcher();
 
   export let symbol, title, date, id;
-  function deleteEvent() {
-    dispatch("delete", {
-      id: id
-    });
-  }
 
   $: timeFromNow = dayjs(date).fromNow();
+
+  function deleteEvent() {
+    let updatedEvents = Array.from($events);
+    let updatedEventList = updatedEvents.filter(entry => {
+      return entry.id != id;
+    });
+    events.update(current => updatedEventList);
+    localStorage.setItem("events", JSON.stringify($events));
+  }
 </script>
 
 <style>
