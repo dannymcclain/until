@@ -46,15 +46,16 @@
 <style>
   section {
     /* padding: 80px; */
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background: rgba(0, 0, 0, 0.8);
     position: absolute;
     top: 0;
     right: 0;
+    padding: 80px 0 0 0;
   }
   .container {
     padding: 40px;

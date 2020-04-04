@@ -3,6 +3,8 @@
   import Calender from "./Calender.svelte";
   import { getMonthName } from "./date-time.js";
   import dayjs from "dayjs";
+  import { slide } from "svelte/transition";
+  import { backInOut } from "svelte/easing";
 
   const dispatch = createEventDispatcher();
 
@@ -58,8 +60,8 @@
     z-index: 100;
     background: #fff;
     position: absolute;
-    top: 40px;
-    left: 0px;
+    top: 48px;
+    left: -56px;
     border: 1px solid #f5f5f5;
     display: inline-block;
     border-radius: 8px;
@@ -97,6 +99,21 @@
     justify-content: flex-end;
     align-items: center;
   }
+  input {
+    font-size: 16px;
+    padding: 16px;
+    font-weight: 800;
+    min-width: 0;
+    flex: auto;
+    outline: none;
+    border: 2px solid #3a3a3d;
+    background: transparent;
+    transition: border-color 200ms linear;
+    color: #fff;
+  }
+  input:focus {
+    border-color: #fff;
+  }
 </style>
 
 <div class="relative">
@@ -105,7 +122,7 @@
     on:focus={onFocus}
     value={dayjs(selected).format('MMM D, YYYY')} />
   {#if showDatePicker}
-    <div class="box">
+    <div class="box" transition:slide={{ duration: 400, easing: backInOut }}>
       <div class="close">
         <button on:click={() => (showDatePicker = false)}>×</button>
       </div>
