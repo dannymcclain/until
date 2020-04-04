@@ -93,8 +93,15 @@
     transition: border-color 150ms linear, color 150ms linear;
   }
   button:hover {
-    border-color: #74747a;
-    color: #a5a5ad;
+    border-color: #fff;
+    color: #fff;
+    /* border-color: #74747a;
+    color: #a5a5ad; */
+  }
+  button:active {
+    border-color: #fff;
+    background: transparent;
+    color: #fff;
   }
 </style>
 
