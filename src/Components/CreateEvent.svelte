@@ -147,6 +147,7 @@
     </label>
     <p>Event Date</p>
     <DatePicker
+      showDatePicker={true}
       on:datechange={onDateChange}
       selected={selectedDate}
       isAllowed={date => {
