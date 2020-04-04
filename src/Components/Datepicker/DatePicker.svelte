@@ -52,10 +52,12 @@
 
 <style>
   .box {
-    background: #272729;
-    border: 2px solid #4e4e52;
+    /* background: #272729;
+    border: 2px solid #4e4e52; */
+    border: none;
+    background: #3a3a3d;
     display: inline-block;
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 20px;
   }
 

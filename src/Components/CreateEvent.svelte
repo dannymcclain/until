@@ -86,12 +86,13 @@
     flex: auto;
     outline: none;
     /* border: 2px solid #3a3a3d; */
-    border: 2px solid #4e4e52;
-    background: transparent;
+    /* border: 2px solid #4e4e52; */
+    border: none;
+    background: #3a3a3d;
     transition: border-color 200ms linear;
     color: #fff;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 4px;
   }
   input:focus {
     border-color: #fff;
