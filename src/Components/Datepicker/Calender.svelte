@@ -32,15 +32,12 @@
 
 <style>
   .container {
-    margin-top: 8px;
-    /* padding: 20px; */
-    width: 306px;
     font-size: 16px;
   }
   .row {
-    display: flex;
-    margin: 2px 6px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(32px, 1fr));
+    grid-gap: 0;
   }
 
   .cell {
@@ -49,7 +46,7 @@
     height: 40px;
     justify-content: center;
     align-items: center;
-    margin: 1px;
+    /* margin: 1px; */
   }
 
   .selected {
@@ -65,7 +62,6 @@
 
   .disabled {
     cursor: not-allowed;
-    /* background: #efefef; */
     color: #bfbfbf;
   }
 
@@ -73,7 +69,6 @@
     background: #eee;
     color: #000;
     cursor: pointer;
-    /* transform: scale(1.3); */
   }
   .selected.highlight:hover {
     background: #000;

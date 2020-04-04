@@ -95,8 +95,6 @@
   button:hover {
     border-color: #fff;
     color: #fff;
-    /* border-color: #74747a;
-    color: #a5a5ad; */
   }
   button:active {
     border-color: #fff;

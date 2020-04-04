@@ -58,7 +58,7 @@
     padding: 80px 0 0 0;
   }
   .container {
-    padding: 40px;
+    padding: 40px 20px 20px;
     background: #272729;
     border-radius: 8px;
     display: flex;
@@ -76,6 +76,7 @@
     line-height: 1;
     color: #a5a5ad;
     font-size: 16px;
+    width: 100%;
   }
   input {
     font-size: 16px;
@@ -84,10 +85,13 @@
     min-width: 0;
     flex: auto;
     outline: none;
-    border: 2px solid #3a3a3d;
+    /* border: 2px solid #3a3a3d; */
+    border: 2px solid #4e4e52;
     background: transparent;
     transition: border-color 200ms linear;
     color: #fff;
+    width: 100%;
+    border-radius: 8px;
   }
   input:focus {
     border-color: #fff;

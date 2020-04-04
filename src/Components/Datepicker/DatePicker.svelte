@@ -52,11 +52,10 @@
 
 <style>
   .box {
-    background: #fff;
-    border: 1px solid #f5f5f5;
+    background: #272729;
+    border: 2px solid #4e4e52;
     display: inline-block;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     padding: 20px;
   }
 
@@ -69,12 +68,11 @@
     width: 100%;
   }
 
-  button {
+  /* button {
     font-weight: 800;
     font-size: 14px;
     border-radius: 4px;
     outline: none;
-    /* border: 1px solid #ccc; */
     border: none;
     background: #eee;
     padding: 4px 8px;
@@ -83,6 +81,28 @@
   }
   button:hover {
     background: #ddd;
+  } */
+  button {
+    padding: 6px 8px;
+    background: #272729;
+    border: 1px solid #4e4e52;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1;
+    color: #7e7e85;
+    align-self: flex-end;
+    cursor: pointer;
+    transition: border-color 150ms linear, color 150ms linear;
+  }
+  button:hover {
+    border-color: #fff;
+    color: #fff;
+  }
+  button:active {
+    border-color: #fff;
+    background: transparent;
+    color: #fff;
   }
 </style>
 
